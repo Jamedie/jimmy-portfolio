@@ -1,0 +1,25 @@
+/* /styles/font.css */
+
+/* 1. Importation des polices depuis Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;700&family=Lora:wght@400;700&display=swap");
+
+/* 2. Définition des variables de typographie */
+:root {
+  /* --- Familles de polices --- */
+  --font-system: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Ubuntu, Cantarell, "Open Sans", sans-serif;
+  --font-brand: "Lora", serif;
+  --font-body: "IBM Plex Sans", var(--font-system);
+  --font-code: "IBM Plex Mono", monospace;
+
+  /* --- Tailles de texte --- */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-md: 1.125rem; /* 18px */
+  --text-lg: 1.25rem; /* 20px */
+  --text-xl: 1.5rem; /* 24px */
+  --text-2xl: 1.875rem; /* 30px */
+  --text-3xl: 2.25rem; /* 36px */
+  --text-4xl: 3.75rem; /* 60px */
+}

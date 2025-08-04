@@ -1,0 +1,200 @@
+/* /styles/global.css */
+
+@import url("font.css");
+
+/* ======================================================= */
+/* 1. TOKENS DE DESIGN ET THÈME PAR DÉFAUT (Clair)        */
+/* ======================================================= */
+:root {
+  /* --- Tokens de couleur --- */
+  --gray-0: #090b11;
+  --gray-50: #141925;
+  --gray-100: #283044;
+  --gray-200: #3d4663;
+  --gray-300: #505d84;
+  --gray-400: #6474a2;
+  --gray-500: #8490b5;
+  --gray-600: #a3acc8;
+  --gray-700: #c3cadb;
+  --gray-800: #e3e6ee;
+  --gray-900: #f3f4f7;
+  --gray-999: #ffffff;
+  --accent-light: #fff4d1;
+  --accent-regular: #f4b400;
+  --accent-dark: #b28000;
+
+  /* --- Tokens de mise en page --- */
+  --spacing-2: 0.5rem;
+  --spacing-4: 1rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-15: 3.75rem;
+  --border-radius: 0.5rem;
+
+  /* --- Variables sémantiques pour le THÈME CLAIR (par défaut) --- */
+  --color-background: var(--gray-999);
+  --color-surface: var(--gray-900);
+  --color-border: var(--gray-800);
+  --color-text-primary: var(--gray-0);
+  --color-text-secondary: var(--gray-200);
+  --accent-text-over: var(--gray-999);
+  --link-color: var(--accent-dark);
+}
+
+/* ======================================================= */
+/* 2. SURCHARGE POUR LE THÈME SOMBRE                       */
+/* ======================================================= */
+:root.theme-dark {
+  --color-background: var(--gray-0);
+  --color-surface: var(--gray-50);
+  --color-border: var(--gray-100);
+  --color-text-primary: var(--gray-900);
+  --color-text-secondary: var(--gray-700);
+  --accent-text-over: var(--gray-0);
+  --link-color: var(--accent-regular);
+}
+
+/* ======================================================= */
+/* 3. STYLES GLOBAUX                                     */
+/* ======================================================= */
+html,
+body {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.2;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 1rem;
+}
+h1 {
+  font-size: var(--text-4xl);
+}
+h2 {
+  font-size: var(--text-3xl);
+}
+h3 {
+  font-size: var(--text-2xl);
+}
+h4 {
+  font-size: var(--text-xl);
+}
+h5 {
+  font-size: var(--text-lg);
+}
+
+/* ======================================================= */
+/* 4. STYLES RESPONSIVES                                 */
+/* ======================================================= */
+@media (max-width: 768px) {
+  h1 {
+    font-size: var(--text-3xl);
+  }
+  h2 {
+    font-size: var(--text-2xl);
+  }
+  h3 {
+    font-size: var(--text-xl);
+  }
+  h4 {
+    font-size: var(--text-lg);
+  }
+  h5 {
+    font-size: var(--text-md);
+  }
+}
+
+/* ======================================================= */
+/* 5. CLASSES UTILITAIRES                                */
+/* ======================================================= */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+}
+.btn--primary {
+  background-color: var(--accent-regular);
+  color: var(--accent-text-over);
+}
+.btn--primary:hover {
+  background-color: var(--accent-dark);
+}
+.btn--secondary {
+  background-color: transparent;
+  border-color: var(--accent-regular);
+  color: var(--accent-regular);
+}
+.btn--secondary:hover {
+  background-color: var(--accent-regular);
+  color: var(--accent-text-over);
+}
+
+.gap-2 {
+  gap: var(--spacing-2);
+}
+.gap-4 {
+  gap: var(--spacing-4);
+}
+.gap-8 {
+  gap: var(--spacing-8);
+}
+.gap-10 {
+  gap: var(--spacing-10);
+}
+.gap-15 {
+  gap: var(--spacing-15);
+}
+
+.py-2 {
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+}
+.py-4 {
+  padding-top: var(--spacing-4);
+  padding-bottom: var(--spacing-4);
+}
+.py-8 {
+  padding-top: var(--spacing-8);
+  padding-bottom: var(--spacing-8);
+}
+.py-10 {
+  padding-top: var(--spacing-10);
+  padding-bottom: var(--spacing-10);
+}
+.py-15 {
+  padding-top: var(--spacing-15);
+  padding-bottom: var(--spacing-15);
+}

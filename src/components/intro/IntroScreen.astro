@@ -1,9 +1,10 @@
-<script is:inline>
-  const alreadySeen = false; //sessionStorage.getItem("hasSeenIntro");
+---
+// src/components/IntroScreen.astro
+---
 
-  if (!alreadySeen) {
+<script is:inline>
+  function showIntroAnimation() {
     document.documentElement.classList.add("with-intro");
-    sessionStorage.setItem("hasSeenIntro", "true");
 
     window.addEventListener("DOMContentLoaded", () => {
       const intro = document.getElementById("intro-screen");
@@ -17,11 +18,47 @@
       }, 3000);
     });
   }
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const isDevMode = urlParams.has("intro");
+
+  if (isDevMode) {
+    console.log("DEV MODE : Affichage forcé de l'intro.");
+    showIntroAnimation();
+  } else {
+    const hasBeenOnSite = sessionStorage.getItem("hasBeenOnSite");
+
+    if (!hasBeenOnSite) {
+      const referrer = document.referrer;
+      const currentHost = window.location.hostname;
+      let shouldShowIntro = false;
+
+      if (!referrer) {
+        shouldShowIntro = true;
+      } else {
+        try {
+          const referrerHost = new URL(referrer).hostname;
+          if (referrerHost !== currentHost) {
+            shouldShowIntro = true;
+          }
+        } catch (e) {
+          shouldShowIntro = true;
+        }
+      }
+
+      if (shouldShowIntro) {
+        showIntroAnimation();
+      }
+
+      sessionStorage.setItem("hasBeenOnSite", "true");
+    }
+  }
 </script>
 
 <div id="intro-screen">
   <div class="intro-content">
-    <div class="logo" aria-label="Logo Astrog@mers"></div>
+    <div class="logo" aria-label="Logo"></div>
+
     <p>Chargement...</p>
   </div>
 </div>

@@ -15,18 +15,15 @@ const {
   image = "/images/social-default.jpg",
 } = Astro.props;
 
-// Si Astro.site n'est pas configuré, on arrête ici pour éviter les erreurs.
-// Le mieux reste de TOUJOURS le configurer dans astro.config.mjs
 if (!Astro.site) {
   throw new Error(
     "Veuillez définir `site` dans votre fichier `astro.config.mjs` pour que les méta-tags SEO fonctionnent correctement."
   );
 }
 
-const siteName = "Jimmy Gaucher | Développeur";
+const siteName = "Jimmy Gaucher | Développeur ";
 const fullTitle = `${title} | ${siteName}`;
 
-// CORRECTION : On utilise .href pour passer une string au constructeur URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site.href);
 const imageURL = new URL(image, Astro.site.href);
 
@@ -36,7 +33,6 @@ const locales = {
 };
 
 const getLocalizedPath = (targetLang: "fr" | "en") => {
-  // Remplace le premier segment de langue (/fr/, /en/) par la langue cible
   return Astro.url.pathname.replace(/^\/[a-z]{2}/, `/${targetLang}`);
 };
 ---
@@ -47,10 +43,11 @@ const getLocalizedPath = (targetLang: "fr" | "en") => {
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
 
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href={canonicalURL.href} />
 
-  {/* CORRECTION : On utilise .href partout */}
   <link
     rel="alternate"
     hreflang="fr"

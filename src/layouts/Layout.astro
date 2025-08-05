@@ -5,23 +5,24 @@ import Footer from "@/components/layout/Footer.astro";
 import IntroScreen from "@/components/intro/IntroScreen.astro";
 import SEO from "@/components/common/SEO.astro";
 
-// Importer les styles globaux
 import "@/styles/global.css";
 
-// 1. Déclarer les props attendues (title et lang)
 export interface Props {
   i18n: any;
   lang: "fr" | "en";
+  pageKey: string;
 }
-const { i18n, lang } = Astro.props;
+const { i18n, lang, pageKey } = Astro.props;
 const isHome = /^\/(fr|en)\/?$/.test(Astro.url.pathname);
-const pageKey = Astro.url.pathname.includes("/projets") ? "projects" : "home";
-const meta = i18n[pageKey] || i18n.home;
+
+const pageMeta = i18n[pageKey];
+const title = pageMeta?.page_name || i18n.common.site_name;
+const description = pageMeta?.description || i18n.common.site_description;
 ---
 
 <html lang={lang}>
   <head>
-    <SEO title={meta.title} description={meta.description} lang={lang} />
+    <SEO title={title} description={description} lang={lang} />
   </head>
 
   <body>

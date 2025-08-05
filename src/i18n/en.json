@@ -1,9 +1,10 @@
 {
   "common": {
-    "nav_home": "Home",
-    "nav_about": "About"
+    "site_name": "Jimmy Gaucher | Developer",
+    "site_description": "Passionate about technology, I am a mobile, web, and augmented reality developer. I specialize in mobile development with Unity, but I am also able to develop web applications and augmented reality experiences."
   },
   "home": {
+    "page_name": "Jimmy Gaucher | Developer",
     "title": "Welcome to my website!"
   },
   "hero": {

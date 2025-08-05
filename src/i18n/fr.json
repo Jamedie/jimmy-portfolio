@@ -1,9 +1,11 @@
 {
   "common": {
-    "nav_home": "Accueil",
-    "nav_about": "À propos"
+    "site_name": "Jimmy Gaucher | Développeur",
+    "site_description": "Passionné par la technologie, je suis développeur mobile, web et réalité augmentée. Je suis spécialisé en développement mobile avec Unity, mais je suis également capable de développer des applications web et des applications de réalité augmentée."
   },
   "home": {
+    "page_name": "Jimmy Gaucher | Développeur",
+    "description": "Bienvenue sur le portfolio de Jimmy Gaucher. Découvrez mes projets en développement web, mobile et AR.",
     "title": "Bienvenue sur mon site !"
   },
   "hero": {

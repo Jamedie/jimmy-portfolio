@@ -11,7 +11,7 @@ const safeLang = isSupportedLang(lang) ? lang : "fr";
 const i18n = (await import(`../../i18n/${safeLang}.json`)).default;
 ---
 
-<Layout i18n={i18n} lang={safeLang}>
+<Layout i18n={i18n} lang={safeLang} pageKey="home">
   <h1>{i18n.home.title}</h1>
   <h2>Hello World but h2</h2>
   <h3>Hello World but h3</h3>

@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import ThemeToggle from "@/components/common/ThemeToggle.astro";
 
 const { lang } = Astro.params;
 const supportedLangs = ["fr", "en"] as const;
@@ -12,6 +13,7 @@ const i18n = (await import(`../../i18n/${safeLang}.json`)).default;
 ---
 
 <Layout i18n={i18n} lang={safeLang} pageKey="home">
+  <ThemeToggle />
   <h1>{i18n.home.title}</h1>
   <h2>Hello World but h2</h2>
   <h3>Hello World but h3</h3>

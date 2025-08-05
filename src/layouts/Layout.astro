@@ -20,6 +20,24 @@ const title = pageMeta?.page_name || i18n.common.site_name;
 const description = pageMeta?.description || i18n.common.site_description;
 ---
 
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.documentElement.classList.remove("theme-dark");
+  } else {
+    document.documentElement.classList.add("theme-dark");
+  }
+</script>
+
 <html lang={lang}>
   <head>
     <SEO title={title} description={description} lang={lang} />

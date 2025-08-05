@@ -1,43 +1,38 @@
 ---
+// src/components/common/ThemeToggle.astro
 import Icon from "./Icon.astro";
 ---
 
-<!-- Theming -->
-<script is:inline>
-  const getThemePreference = () => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
-  const isDark = getThemePreference() === "dark";
-  document.documentElement.classList.toggle("theme-dark", isDark);
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.getElementById("theme-toggle-btn");
 
-  if (typeof localStorage !== "undefined") {
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("theme-dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-  }
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("theme-dark");
+
+        const isDark =
+          document.documentElement.classList.contains("theme-dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+    }
+  });
 </script>
 
-<theme-toggle>
-  <button>
-    <span class="sr-only">Dark theme</span>
+<div class="theme-toggle">
+  <button id="theme-toggle-btn">
     <span class="icon light"><Icon icon="sun" /></span>
     <span class="icon dark"><Icon icon="moon" /></span>
   </button>
-</theme-toggle>
+</div>
 
 <style>
   .theme-toggle {
-    color: var(--gray-100); /* ou var(--accent-regular), etc. */
+    color: var(--gray-100);
+  }
+
+  #theme-toggle-btn {
+    background-color: var(--color-solid);
   }
 
   button {
@@ -75,8 +70,12 @@ import Icon from "./Icon.astro";
   }
 
   :global(.theme-dark) .icon.dark,
-  :global(html:not(.theme-dark)) .icon.light,
-  button[aria-pressed="false"] .icon.light {
+  :global(html:not(.theme-dark)) .icon.light {
+    color: var(--accent-text-over);
+  }
+
+  :global(.theme-dark) .icon.light,
+  :global(html:not(.theme-dark)) .icon.dark {
     color: var(--accent-text-over);
   }
 
@@ -84,43 +83,8 @@ import Icon from "./Icon.astro";
     .icon,
     .icon.light::before {
       transition:
-        transform var(--theme-transition),
-        color var(--theme-transition);
-    }
-  }
-
-  @media (forced-colors: active) {
-    .icon.light::before {
-      background-color: SelectedItem;
+        transform 0.3s ease,
+        color 0.3s ease;
     }
   }
 </style>
-
-<script>
-  class ThemeToggle extends HTMLElement {
-    constructor() {
-      super();
-
-      const button = this.querySelector("button")!;
-
-      /** Set the theme to dark/light mode. */
-      const setTheme = (dark: boolean) => {
-        document.documentElement.classList[dark ? "add" : "remove"](
-          "theme-dark"
-        );
-        button.setAttribute("aria-pressed", String(dark));
-      };
-
-      // Toggle the theme when a user clicks the button.
-      button.addEventListener("click", () => setTheme(!this.isDark()));
-
-      // // Initialize button state to reflect current theme.
-      setTheme(this.isDark());
-    }
-
-    isDark() {
-      return document.documentElement.classList.contains("theme-dark");
-    }
-  }
-  customElements.define("theme-toggle", ThemeToggle);
-</script>

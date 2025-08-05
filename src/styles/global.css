@@ -33,6 +33,7 @@
 
   /* --- Variables sémantiques pour le THÈME CLAIR (par défaut) --- */
   --color-background: var(--gray-999);
+  --color-solid: var(--gray-100);
   --color-surface: var(--gray-900);
   --color-border: var(--gray-800);
   --color-text-primary: var(--gray-0);
@@ -46,6 +47,7 @@
 /* ======================================================= */
 :root.theme-dark {
   --color-background: var(--gray-0);
+  --color-solid: var(--gray-800);
   --color-surface: var(--gray-50);
   --color-border: var(--gray-100);
   --color-text-primary: var(--gray-900);

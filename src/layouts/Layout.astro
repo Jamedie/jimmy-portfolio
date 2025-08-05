@@ -1,20 +1,23 @@
 ---
-// src/layouts/BaseLayout.astro
-import Header from "../components/layout/Header.astro";
-import Footer from "../components/layout/Footer.astro";
-import IntroScreen from "../components/intro/IntroScreen.astro";
+// src/layouts/Layout.astro
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import IntroScreen from "@/components/intro/IntroScreen.astro";
+import "@/styles/global.css";
 
-// Import global styles
-import "../styles/global.css";
-
-const { url } = Astro;
-const isHome = url.pathname === "/";
+// 1. Déclarer les props attendues (title et lang)
+export interface Props {
+  title: string;
+  lang: "fr" | "en";
+}
+const { title, lang } = Astro.props;
+const isHome = /^\/(fr|en)\/?$/.test(Astro.url.pathname);
 ---
 
-<html lang="fr">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <title>Jimmy Gaucher - Développeur</title>
+    <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
   </head>
 
@@ -25,7 +28,6 @@ const isHome = url.pathname === "/";
 
     <main>
       <slot />
-      <!-- Here will be the page-specific content -->
     </main>
 
     <Footer />

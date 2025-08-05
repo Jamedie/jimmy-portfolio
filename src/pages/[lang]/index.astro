@@ -1,0 +1,29 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const { lang } = Astro.params;
+
+const supportedLangs = ["fr", "en"] as const;
+
+function isSupportedLang(str: string | undefined): str is "fr" | "en" {
+  return supportedLangs.includes(str as any);
+}
+
+const safeLang = isSupportedLang(lang) ? lang : "fr";
+const t = (await import(`../../i18n/${safeLang}.json`)).default;
+---
+
+<Layout title={t.home_title} lang={safeLang}>
+  <h1>{t.home_title}</h1>
+  <h2>Hello World but h2</h2>
+  <h3>Hello World but h3</h3>
+  <h4>Hello World but h4</h4>
+  <h5>Hello World but h5</h5>
+  <p>Hello World but p</p>
+
+  <p>Cette page est affichée en : {safeLang.toUpperCase()}</p>
+
+  <button class="btn btn--primary">Contactez-moi</button>
+
+  <a href="/projets" class="btn btn--secondary">Voir mes projets</a>
+</Layout>

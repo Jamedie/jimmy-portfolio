@@ -1,6 +1,13 @@
 {
-  "nav_home": "Home",
-  "nav_about": "About",
-  "home_title": "Welcome to my website!",
-  "about_title": "Who are we?"
+  "common": {
+    "nav_home": "Home",
+    "nav_about": "About"
+  },
+  "home": {
+    "title": "Welcome to my website!"
+  },
+  "hero": {
+    "subtitle": "Mobile, web, and augmented reality developer",
+    "description": "Passionate about technology, I am a mobile, web, and augmented reality developer. I specialize in mobile development with Unity, but I am also able to develop web applications and augmented reality experiences."
+  }
 }

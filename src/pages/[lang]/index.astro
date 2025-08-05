@@ -2,19 +2,17 @@
 import Layout from "@/layouts/Layout.astro";
 
 const { lang } = Astro.params;
-
 const supportedLangs = ["fr", "en"] as const;
-
 function isSupportedLang(str: string | undefined): str is "fr" | "en" {
   return supportedLangs.includes(str as any);
 }
-
 const safeLang = isSupportedLang(lang) ? lang : "fr";
-const t = (await import(`../../i18n/${safeLang}.json`)).default;
+
+const i18n = (await import(`../../i18n/${safeLang}.json`)).default;
 ---
 
-<Layout title={t.home_title} lang={safeLang}>
-  <h1>{t.home_title}</h1>
+<Layout i18n={i18n} lang={safeLang}>
+  <h1>{i18n.home.title}</h1>
   <h2>Hello World but h2</h2>
   <h3>Hello World but h3</h3>
   <h4>Hello World but h4</h4>

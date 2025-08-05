@@ -1,0 +1,84 @@
+---
+// src/components/SEO.astro
+
+export interface Props {
+  title: string;
+  description: string;
+  lang: "fr" | "en";
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  lang,
+  image = "/images/social-default.jpg",
+} = Astro.props;
+
+// Si Astro.site n'est pas configuré, on arrête ici pour éviter les erreurs.
+// Le mieux reste de TOUJOURS le configurer dans astro.config.mjs
+if (!Astro.site) {
+  throw new Error(
+    "Veuillez définir `site` dans votre fichier `astro.config.mjs` pour que les méta-tags SEO fonctionnent correctement."
+  );
+}
+
+const siteName = "Jimmy Gaucher | Développeur";
+const fullTitle = `${title} | ${siteName}`;
+
+// CORRECTION : On utilise .href pour passer une string au constructeur URL
+const canonicalURL = new URL(Astro.url.pathname, Astro.site.href);
+const imageURL = new URL(image, Astro.site.href);
+
+const locales = {
+  fr: "fr_FR",
+  en: "en_US",
+};
+
+const getLocalizedPath = (targetLang: "fr" | "en") => {
+  // Remplace le premier segment de langue (/fr/, /en/) par la langue cible
+  return Astro.url.pathname.replace(/^\/[a-z]{2}/, `/${targetLang}`);
+};
+---
+
+<Fragment>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonicalURL.href} />
+
+  {/* CORRECTION : On utilise .href partout */}
+  <link
+    rel="alternate"
+    hreflang="fr"
+    href={new URL(getLocalizedPath("fr"), Astro.site.href).href}
+  />
+  <link
+    rel="alternate"
+    hreflang="en"
+    href={new URL(getLocalizedPath("en"), Astro.site.href).href}
+  />
+  <link
+    rel="alternate"
+    hreflang="x-default"
+    href={new URL(getLocalizedPath("fr"), Astro.site.href).href}
+  />
+
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL.href} />
+  <meta property="og:image" content={imageURL.href} />
+  <meta property="og:locale" content={locales[lang]} />
+  <meta property="og:site_name" content={siteName} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={imageURL.href} />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+</Fragment>

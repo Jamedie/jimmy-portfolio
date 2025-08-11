@@ -2,6 +2,10 @@
 import Layout from "@/layouts/Layout.astro";
 import ThemeToggle from "@/components/common/ThemeToggle.astro";
 
+export function getStaticPaths() {
+  return [{ params: { lang: "fr" } }, { params: { lang: "en" } }];
+}
+
 const { lang } = Astro.params;
 const supportedLangs = ["fr", "en"] as const;
 function isSupportedLang(str: string | undefined): str is "fr" | "en" {

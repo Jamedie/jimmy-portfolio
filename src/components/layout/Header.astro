@@ -1,0 +1,144 @@
+---
+import { Image } from "astro:assets";
+import Icon from "../common/Icon.astro";
+import QuickAccess from "../common/QuickAccess.astro";
+
+export interface Props {
+  i18n: any;
+  lang: "fr" | "en";
+}
+
+const { i18n, lang } = Astro.props;
+---
+
+<header>
+  <div class="navBar">
+    <img class="logo" src="/images/logo.png" alt="Logo de Jimmy Gaucher" />
+    <QuickAccess
+      label={i18n.common.quick_access}
+      keycapLabel={i18n.common.keycap_label}
+    />
+  </div>
+</header>
+
+<style>
+  :root {
+    --header-height: 80px;
+    --glass-radius: 16px;
+    --glass-blur: 16px;
+    --glass-saturate: 160%;
+  }
+
+  /* Header: collant en haut, centré */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-top: var(--spacing-5);
+    /* on laisse les clics à la navBar seulement */
+    pointer-events: none;
+  }
+
+  /* Plaque “liquid glass” */
+  .navBar {
+    pointer-events: auto;
+    position: relative;
+    height: var(--header-height);
+    width: min(1100px, 90%);
+    padding: 0 var(--spacing-4);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: var(--glass-radius);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    /* dégradé de verre très léger */
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.1)
+    );
+    /* flou + peps */
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    -webkit-backdrop-filter: blur(var(--glass-blur))
+      saturate(var(--glass-saturate));
+    /* ombre douce */
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+  }
+
+  /* reflet doux en haut */
+  .navBar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.35),
+      transparent 45%
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  /* liseré de séparation en bas */
+  .navBar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.22);
+    pointer-events: none;
+  }
+
+  /* Fallback si pas de backdrop-filter */
+  @supports not (
+    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+  ) {
+    .navBar {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    .navBar::before {
+      display: none;
+    }
+  }
+
+  /* Thème sombre : verre neutre basé sur ta palette gray */
+  @media (prefers-color-scheme: dark) {
+    .navBar {
+      background: linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--gray-800) 20%, transparent),
+        color-mix(in oklab, var(--gray-50) 10%, transparent)
+      );
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow:
+        0 12px 34px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+  }
+
+  /* Micro‑interaction au survol */
+  .navBar:hover {
+    box-shadow:
+      0 14px 36px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px; /* optionnel */
+  }
+</style>

@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import ThemeToggle from "@/components/common/ThemeToggle.astro";
 
+import Header from "@/components/layout/Header.astro";
+
 export function getStaticPaths() {
   return [{ params: { lang: "fr" } }, { params: { lang: "en" } }];
 }

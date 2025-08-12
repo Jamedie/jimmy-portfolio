@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "files": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Get-ChildItem -Recurse -Force -Name | Where-Object { $_ -notmatch '(^|\\\\)(node_modules|\\.vscode|\\.astro|\\.git)(\\\\|$)' } | Out-File -FilePath listing.txt -Encoding utf8\""
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.2",

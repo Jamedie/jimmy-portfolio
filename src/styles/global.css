@@ -19,17 +19,18 @@
   --gray-800: #e3e6ee;
   --gray-900: #f3f4f7;
   --gray-999: #ffffff;
-  --accent-light: #fff4d1;
+  --accent-light: #ffca28;
   --accent-regular: #f4b400;
-  --accent-dark: #b28000;
+  --accent-dark: #d97706;
 
   /* --- Tokens de mise en page --- */
-  --spacing-2: 0.5rem;
-  --spacing-4: 1rem;
-  --spacing-8: 2rem;
-  --spacing-10: 2.5rem;
-  --spacing-15: 3.75rem;
-  --border-radius: 0.5rem;
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-5: 1.25rem; /* 20px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-10: 2.5rem; /* 40px */
+  --spacing-15: 3.75rem; /* 60px */
+  --border-radius: 0.75rem; /* 12px */
 
   /* --- Variables sémantiques pour le THÈME CLAIR (par défaut) --- */
   --color-background: var(--gray-999);
@@ -135,7 +136,7 @@ h5 {
 /* ======================================================= */
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: var(--spacing-2);
   font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: 700;
@@ -147,13 +148,21 @@ h5 {
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
     border-color 0.2s ease-in-out;
 }
+.btn--primary:hover {
+  transform: translateY(-1px);
+}
+.btn--primary:active {
+  transform: translateY(0);
+}
+
 .btn--primary {
   background-color: var(--accent-regular);
   color: var(--accent-text-over);
 }
 .btn--primary:hover {
-  background-color: var(--accent-dark);
+  background-color: var(--accent-light);
 }
+
 .btn--secondary {
   background-color: transparent;
   border-color: var(--accent-regular);
@@ -162,6 +171,7 @@ h5 {
 .btn--secondary:hover {
   background-color: var(--accent-regular);
   color: var(--accent-text-over);
+  transform: translateY(-1px);
 }
 
 .gap-2 {

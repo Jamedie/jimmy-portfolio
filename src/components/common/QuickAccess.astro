@@ -1,0 +1,120 @@
+---
+import Icon from "./Icon.astro";
+
+export interface Props {
+  label: string;
+  keycapLabel: string;
+}
+
+const { label, keycapLabel } = Astro.props;
+---
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", async () => {
+    const btn = document.getElementById("quick-access-btn");
+    const badge = document.getElementById("hotkey-badge");
+    if (!btn || !badge) return;
+
+    let label = badge.dataset.default || "Q";
+    let openKeys = new Set([label.toLowerCase()]);
+
+    if (navigator.keyboard?.getLayoutMap) {
+      // Détection via Keyboard API (expérimental, HTTPS requis)
+      try {
+        const map = await navigator.keyboard.getLayoutMap();
+        const charOnKeyA = (map.get("KeyA") || "").toLowerCase();
+
+        if (charOnKeyA === "a") {
+          // QWERTY: ouvrir avec Q
+          label = "Q";
+          openKeys = new Set(["q"]);
+        } else if (charOnKeyA === "q") {
+          // AZERTY: ouvrir avec A
+          label = "A";
+          openKeys = new Set(["a"]);
+        }
+        badge.textContent = label;
+      } catch (e) {
+        console.warn("Keyboard API indisponible ou bloquée.", e);
+      }
+    } else {
+      console.warn("Keyboard API non supportée.");
+    }
+
+    const onKeyDown = (ev) => {
+      const k = (ev.key || "").toLowerCase();
+      if (openKeys.has(k)) {
+        ev.preventDefault();
+        openMenu();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+
+    const observer = new MutationObserver(() => {
+      if (!document.body.contains(btn)) {
+        window.removeEventListener("keydown", onKeyDown);
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    btn.addEventListener("click", openMenu);
+
+    function openMenu() {
+      console.log("Menu ouvert");
+      // TODO: ouvre ton vrai menu ici
+    }
+  });
+</script>
+
+<div class="quick-access">
+  <button
+    id="quick-access-btn"
+    class="btn btn--primary"
+    aria-label="Accès rapide"
+  >
+    <Icon icon="menu" size="2rem" />
+    <span class="label">{label}</span>
+    <kbd id="hotkey-badge" class="keycap-glass">{keycapLabel}</kbd>
+  </button>
+</div>
+
+<style>
+  .quick-access {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn {
+    display: flex;
+    gap: var(--spacing-4);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .keycap-glass {
+    display: inline-block;
+    padding: 0.25em 0.45em;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--accent-text-over);
+
+    /* Fond neutre semi-transparent */
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.4),
+      0 2px 4px rgba(0, 0, 0, 0.4);
+
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    transition: background-color 0.2s ease;
+  }
+
+  button:hover .keycap-glass {
+    background: rgba(255, 255, 255, 0.25);
+  }
+</style>

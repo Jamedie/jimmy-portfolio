@@ -21,8 +21,7 @@ if (!Astro.site) {
   );
 }
 
-const siteName = "Jimmy Gaucher | Développeur ";
-const fullTitle = `${title} | ${siteName}`;
+const fullTitle = `${title}`;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site.href);
 const imageURL = new URL(image, Astro.site.href);
@@ -70,7 +69,7 @@ const getLocalizedPath = (targetLang: "fr" | "en") => {
   <meta property="og:url" content={canonicalURL.href} />
   <meta property="og:image" content={imageURL.href} />
   <meta property="og:locale" content={locales[lang]} />
-  <meta property="og:site_name" content={siteName} />
+  <meta property="og:site_name" content={title} />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />

@@ -25,11 +25,9 @@ const { label, keycapLabel } = Astro.props;
         const charOnKeyA = (map.get("KeyA") || "").toLowerCase();
 
         if (charOnKeyA === "a") {
-          // QWERTY: ouvrir avec Q
           label = "Q";
           openKeys = new Set(["q"]);
         } else if (charOnKeyA === "q") {
-          // AZERTY: ouvrir avec A
           label = "A";
           openKeys = new Set(["a"]);
         }
@@ -75,7 +73,9 @@ const { label, keycapLabel } = Astro.props;
   >
     <Icon icon="menu" size="2rem" />
     <span class="label">{label}</span>
-    <kbd id="hotkey-badge" class="keycap-glass">{keycapLabel}</kbd>
+    <kbd id="hotkey-badge" class="keycap-glass" data-default={keycapLabel}
+      >{keycapLabel}</kbd
+    >
   </button>
 </div>
 

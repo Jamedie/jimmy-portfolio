@@ -39,7 +39,6 @@ const { i18n, lang } = Astro.props;
     align-items: flex-end;
     justify-content: center;
     padding-top: var(--spacing-5);
-    /* on laisse les clics à la navBar seulement */
     pointer-events: none;
   }
 
@@ -57,24 +56,20 @@ const { i18n, lang } = Astro.props;
 
     border-radius: var(--glass-radius);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    /* dégradé de verre très léger */
     background: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.2),
       rgba(255, 255, 255, 0.1)
     );
-    /* flou + peps */
     backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
     -webkit-backdrop-filter: blur(var(--glass-blur))
       saturate(var(--glass-saturate));
-    /* ombre douce */
     box-shadow:
       0 10px 30px rgba(0, 0, 0, 0.25),
       inset 0 1px 0 rgba(255, 255, 255, 0.25);
     overflow: hidden;
   }
 
-  /* reflet doux en haut */
   .navBar::before {
     content: "";
     position: absolute;
@@ -89,7 +84,6 @@ const { i18n, lang } = Astro.props;
     pointer-events: none;
   }
 
-  /* liseré de séparation en bas */
   .navBar::after {
     content: "";
     position: absolute;
@@ -101,7 +95,6 @@ const { i18n, lang } = Astro.props;
     pointer-events: none;
   }
 
-  /* Fallback si pas de backdrop-filter */
   @supports not (
     (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
   ) {
@@ -114,7 +107,6 @@ const { i18n, lang } = Astro.props;
     }
   }
 
-  /* Thème sombre : verre neutre basé sur ta palette gray */
   @media (prefers-color-scheme: dark) {
     .navBar {
       background: linear-gradient(
@@ -129,7 +121,6 @@ const { i18n, lang } = Astro.props;
     }
   }
 
-  /* Micro‑interaction au survol */
   .navBar:hover {
     box-shadow:
       0 14px 36px rgba(0, 0, 0, 0.28),
@@ -139,6 +130,5 @@ const { i18n, lang } = Astro.props;
   .logo {
     width: 40px;
     height: 40px;
-    border-radius: 8px; /* optionnel */
   }
 </style>

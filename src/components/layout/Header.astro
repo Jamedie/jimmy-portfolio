@@ -1,5 +1,6 @@
 ---
 import QuickAccess from "../common/QuickAccess.astro";
+import ThemeToggle from "../common/ThemeToggle.astro";
 
 export interface Props {
   i18n: any;
@@ -11,7 +12,12 @@ const { i18n, lang } = Astro.props;
 
 <header>
   <div class="navBar">
-    <img class="logo" src="/images/logo.png" alt="Logo de Jimmy Gaucher" />
+    <img
+      class="logo"
+      src="/images/logo-jimmy.svg"
+      alt="Logo de Jimmy Gaucher"
+    />
+    <ThemeToggle />
     <QuickAccess
       label={i18n.common.quick_access}
       keycapLabel={i18n.common.keycap_label}

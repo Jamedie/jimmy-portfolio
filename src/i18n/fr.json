@@ -12,11 +12,11 @@
   },
   "hero": {
     "greeting": "Bonjour !",
-    "name": "Je suis Jimmy Gaucher",
-    "role_description": "Développeur mobile, web & réalité augmentée",
+    "im": "Je suis",
+    "role_description": "Développeur mobile, web et réalité augmentée,\npassionné par la création d’expériences innovantes.",
     "cta_contact": "Me contacter",
     "cta_contact_href": "mailto:jimmy@example.com",
-    "cta_resume": "CV",
+    "cta_resume": "Resume",
     "cta_resume_href": "/cv.pdf"
   },
   "footer": {

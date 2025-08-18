@@ -11,8 +11,7 @@
     "title": "Welcome to my website!"
   },
   "hero": {
-    "greeting": "Hello !",
-    "name": "I'm Jimmy Gaucher",
+    "greeting": "Hello ! I'm",
     "role_description": "Mobile, web & AR developer",
     "cta_contact": "Get in touch",
     "cta_contact_href": "mailto:jimmy@example.com",

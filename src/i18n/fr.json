@@ -1,22 +1,22 @@
 {
   "common": {
     "site_name": "Jimmy Gaucher | Développeur",
-    "site_description": "Passionné par la technologie, je suis développeur mobile, web et réalité augmentée. Je suis spécialisé en développement mobile avec Unity, mais je suis également capable de développer des applications web et des applications de réalité augmentée.",
+    "site_description": "Passionné par la technologie, je suis développeur mobile, web et réalité augmentée. Spécialisé en développement mobile avec Unity, je conçois aussi des applications web et des expériences en réalité augmentée.",
     "quick_access": "Accès rapide",
     "keycap_label": "A"
   },
   "home": {
     "page_name": "Jimmy Gaucher | Développeur",
-    "description": "Bienvenue sur le portfolio de Jimmy Gaucher. Découvrez mes projets en développement web, mobile et AR.",
+    "description": "Bienvenue sur le portfolio de Jimmy Gaucher. Découvrez mes projets en développement web, mobile et réalité augmentée.",
     "title": "Bienvenue sur mon site !"
   },
   "hero": {
     "greeting": "Bonjour !",
     "im": "Je suis",
-    "role_description": "Développeur mobile, web et réalité augmentée,\npassionné par la création d’expériences innovantes.",
+    "role_description": "Développeur mobile, web & réalité augmentée,\ncréateur d’expériences numériques innovantes.",
     "cta_contact": "Me contacter",
-    "cta_contact_href": "mailto:jimmy@example.com",
-    "cta_resume": "Resume",
+    "cta_contact_href": "mailto:mail@jimmygaucher.com",
+    "cta_resume": "Voir Mon CV",
     "cta_resume_href": "/cv.pdf"
   },
   "footer": {

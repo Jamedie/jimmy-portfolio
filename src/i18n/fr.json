@@ -19,6 +19,10 @@
     "cta_resume": "Voir Mon CV",
     "cta_resume_href": "/cv.pdf"
   },
+  "about": {
+    "title": "À propos de moi",
+    "description": "Passionné par la technologie, je suis développeur mobile, web et réalité augmentée. Spécialisé en développement mobile avec Unity, je conçois aussi des applications web et des expériences en réalité augmentée."
+  },
   "footer": {
     "description": "Jimmy Gaucher | © 2025 - Tous droits réservés."
   }

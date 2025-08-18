@@ -1,8 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import ThemeToggle from "@/components/common/ThemeToggle.astro";
-
-import Header from "@/components/layout/Header.astro";
 
 export function getStaticPaths() {
   return [{ params: { lang: "fr" } }, { params: { lang: "en" } }];
@@ -18,18 +15,4 @@ const safeLang = isSupportedLang(lang) ? lang : "fr";
 const i18n = (await import(`../../i18n/${safeLang}.json`)).default;
 ---
 
-<Layout i18n={i18n} lang={safeLang} pageKey="home">
-  <ThemeToggle />
-  <h1>{i18n.home.title}</h1>
-  <h2>Hello World but h2</h2>
-  <h3>Hello World but h3</h3>
-  <h4>Hello World but h4</h4>
-  <h5>Hello World but h5</h5>
-  <p>Hello World but p</p>
-
-  <p>Cette page est affichée en : {safeLang.toUpperCase()}</p>
-
-  <button class="btn btn--primary">Contactez-moi</button>
-
-  <a href="/projets" class="btn btn--secondary">Voir mes projets</a>
-</Layout>
+<Layout i18n={i18n} lang={safeLang} pageKey="home" />

@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import Icon from "../common/Icon.astro";
 import QuickAccess from "../common/QuickAccess.astro";
 
 export interface Props {
@@ -29,9 +27,9 @@ const { i18n, lang } = Astro.props;
     --glass-saturate: 160%;
   }
 
-  /* Header: collant en haut, centré */
+  /* Header: positionné en haut, centré */
   header {
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 40;
     width: 100%;

@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+  i18n: any;
+}
+
+const { i18n } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>{i18n.hero.subtitle}</h1>
+    <p>{i18n.hero.description}</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--color-background);
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+</style>

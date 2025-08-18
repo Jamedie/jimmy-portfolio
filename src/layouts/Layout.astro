@@ -2,6 +2,7 @@
 // src/layouts/Layout.astro
 import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
+import Hero from "@/components/layout/Hero.astro";
 import IntroScreen from "@/components/intro/IntroScreen.astro";
 import SEO from "@/components/common/SEO.astro";
 
@@ -49,7 +50,9 @@ const description = pageMeta?.description || i18n.common.site_description;
     <Header i18n={i18n} lang={lang} />
 
     <main>
-      <slot />
+      <slot>
+        <Hero i18n={i18n} />
+      </slot>
     </main>
 
     <Footer i18n={i18n} lang={lang} />

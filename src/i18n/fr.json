@@ -13,5 +13,8 @@
   "hero": {
     "subtitle": "Développeur mobile, web et réalité augmentée",
     "description": "Passionné par la technologie, je suis développeur mobile, web et réalité augmentée. Je suis spécialisé en développement mobile avec Unity, mais je suis également capable de développer des applications web et des applications de réalité augmentée."
+  },
+  "footer": {
+    "description": "Jimmy Gaucher | © 2025 - Tous droits réservés."
   }
 }

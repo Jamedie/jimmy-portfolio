@@ -1,0 +1,37 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<div class="connect-with-me" aria-label="Mes réseaux sociaux">
+  <a
+    href="https://www.linkedin.com/in/jimmy-gaucher-42175510a/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Icon icon="linkedin" size="1.5rem" />
+  </a>
+  <a
+    href="https://github.com/Jamedie"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Icon icon="github" size="1.5rem" />
+  </a>
+</div>
+
+<style>
+  .connect-with-me {
+    display: flex;
+    gap: var(--spacing-4);
+  }
+
+  .connect-with-me a {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .connect-with-me a:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+</style>

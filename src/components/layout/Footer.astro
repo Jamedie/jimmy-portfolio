@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import ConnectWithMe from "../common/ConnectWithMe.astro";
+
+export interface Props {
+  i18n: any;
+  lang: "fr" | "en";
+}
+
+const { i18n } = Astro.props;
+---
+
+<footer>
+  <div class="content-wrapper">
+    <p>{i18n.footer.description}</p>
+
+    <div class="connect-with-me">
+      <ConnectWithMe />
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--color-background);
+    padding: var(--spacing-5);
+    text-align: center;
+  }
+
+  .content-wrapper {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--spacing-5);
+  }
+
+  p {
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+  }
+</style>

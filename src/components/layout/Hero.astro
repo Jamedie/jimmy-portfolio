@@ -11,32 +11,23 @@ const { i18n } = Astro.props;
 
 <section class="hero">
   <div class="container">
-    <h3 class="greeting">{i18n.hero.greeting}</h3>
+    <h3 class="greeting no-select">{i18n.hero.greeting}</h3>
     <h1 class="title">
-      <span class="light">{"im" in i18n.hero ? i18n.hero.im : ""}</span>
-      <span class="first-name">Jimmy</span>
-      <span class="name">Gaucher</span>
+      <span class="light no-select"
+        >{"im" in i18n.hero ? i18n.hero.im : ""}</span
+      >
+      <span class="first-name no-select">Jimmy</span>
+      <span class="name no-select">Gaucher</span>
     </h1>
-    <h4 class="subtitle">{i18n.hero.role_description}</h4>
+    <h4 class="subtitle no-select">{i18n.hero.role_description}</h4>
 
-    <div class="actions">
-      <a
-        class="btn btn--primary"
-        href={i18n.hero.cta_contact_href}
-        rel="noopener"
-      >
-        {i18n.hero.cta_contact}
-      </a>
-      <a
-        class="btn btn--secondary"
-        href={i18n.hero.cta_resume_href}
-        rel="noopener"
-        target="_blank"
-      >
-        {i18n.hero.cta_resume}
-      </a>
-    </div>
-
+    <a
+      class="btn btn--primary"
+      href={i18n.hero.cta_contact_href}
+      rel="noopener"
+    >
+      {i18n.hero.cta_contact}
+    </a>
     <div class="hero-avatar">
       <div class="gradient-bg"></div>
       <Image
@@ -85,13 +76,6 @@ const { i18n } = Astro.props;
     color: var(--color-text-secondary);
     white-space: pre-line;
   }
-
-  .actions {
-    display: flex;
-    gap: var(--spacing-4);
-    flex-wrap: wrap;
-  }
-
   .hero-avatar {
     position: absolute;
     right: 10%;

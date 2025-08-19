@@ -218,3 +218,9 @@ h5 {
   padding-top: var(--spacing-15);
   padding-bottom: var(--spacing-15);
 }
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}

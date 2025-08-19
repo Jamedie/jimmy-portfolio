@@ -13,7 +13,7 @@
   "hero": {
     "greeting": "Bonjour !",
     "im": "Je suis",
-    "role_description": "Développeur mobile, web & réalité augmentée,\ncréateur d’expériences numériques innovantes.",
+    "role_description": "Développeur mobile, toile & réalité augmentée,\ncréateur d’expériences numériques innovantes.",
     "cta_contact": "Me contacter",
     "cta_contact_href": "mailto:mail@jimmygaucher.com",
     "cta_resume": "Voir Mon CV",
@@ -21,7 +21,7 @@
   },
   "about": {
     "title": "À propos de moi",
-    "description": "Passionné par la technologie, je suis développeur mobile, web et réalité augmentée. Spécialisé en développement mobile avec Unity, je conçois aussi des applications web et des expériences en réalité augmentée."
+    "description": "Passionné par la technologie,\nje suis développeur mobile,\nweb et réalité augmentée.\nSpécialisé en développement mobile avec Unity,\nje conçois aussi des applications web et des expériences en réalité augmentée."
   },
   "footer": {
     "description": "Jimmy Gaucher | © 2025 - Tous droits réservés."

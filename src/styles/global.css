@@ -82,6 +82,11 @@ body {
   box-sizing: border-box;
   margin: 0;
 }
+
+section {
+  scroll-margin-top: var(--header-height, 80px); /* ou la valeur exacte */
+}
+
 a {
   color: var(--link-color);
   text-decoration: none;

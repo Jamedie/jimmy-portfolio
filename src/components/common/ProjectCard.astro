@@ -21,10 +21,10 @@ const t = (obj: { fr: string; en: string }) => obj[lang];
       />
     </div>
     <h3 class="title">{t(project.title)}</h3>
-    <p class="desc">{t(project.description)}</p>
+    <p class="desc no-select">{t(project.description)}</p>
 
-    <ul class="tags">
-      {project.tech.map((tag) => <li class="tag">{tag}</li>)}
+    <ul class="tags no-select">
+      {project.tech.map((tag) => <li class="tag no-select">{tag}</li>)}
     </ul>
 
     <div class="actions">
@@ -120,11 +120,13 @@ const t = (obj: { fr: string; en: string }) => obj[lang];
     font-size: 1.4rem;
     font-weight: 700;
     margin: 0;
+    white-space: pre-line;
   }
   .desc {
     margin: 0;
     color: var(--color-text-secondary);
     line-height: 1.5;
+    white-space: pre-line;
   }
 
   .tags {
@@ -142,6 +144,7 @@ const t = (obj: { fr: string; en: string }) => obj[lang];
     border-radius: 999px;
     background: color-mix(in srgb, var(--accent-regular) 8%, transparent);
     border: 1px solid color-mix(in srgb, var(--accent-regular) 20%, transparent);
+    white-space: pre-line;
   }
 
   .actions {
@@ -154,6 +157,7 @@ const t = (obj: { fr: string; en: string }) => obj[lang];
     background: transparent;
     border: 1px solid var(--color-border, rgba(127, 127, 127, 0.25));
     color: var(--color-text);
+    white-space: pre-line;
   }
 
   .btn.ghost:hover {
@@ -179,6 +183,8 @@ const t = (obj: { fr: string; en: string }) => obj[lang];
     object-fit: cover;
     border-top-left-radius: var(--border-radius);
     object-position: top left;
+
+    border: 1px solid var(--color-border, rgba(127, 127, 127, 0.25));
   }
 
   @media (max-width: 600px) {

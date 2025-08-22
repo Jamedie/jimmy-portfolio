@@ -1,0 +1,211 @@
+---
+import type { Project } from "../../data/types";
+import Icon from "./Icon.astro";
+
+export interface Props {
+  project: Project;
+  lang: "fr" | "en";
+}
+const { project, lang } = Astro.props;
+const t = (obj: { fr: string; en: string }) => obj[lang];
+---
+
+<article class="project-card">
+  <div class="content">
+    <div class="icon">
+      <img
+        src={project.icon}
+        alt={t(project.title)}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <h3 class="title">{t(project.title)}</h3>
+    <p class="desc">{t(project.description)}</p>
+
+    <ul class="tags">
+      {project.tech.map((tag) => <li class="tag">{tag}</li>)}
+    </ul>
+
+    <div class="actions">
+      {
+        project.links.github && (
+          <a
+            class="btn ghost"
+            href={project.links.github}
+            target="_blank"
+            rel="noopener"
+          >
+            <Icon icon="github" size="2em" />
+          </a>
+        )
+      }
+      {
+        project.links.demo && (
+          <a
+            class="btn btn--primary"
+            href={project.links.demo}
+            target="_blank"
+            rel="noopener"
+          >
+            Live view <Icon icon="arrow-right" size="1em" />
+          </a>
+        )
+      }
+    </div>
+  </div>
+
+  <div class="thumb">
+    <img
+      src={project.cover}
+      alt={t(project.title)}
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+</article>
+
+<style>
+  .project-card {
+    position: relative;
+    gap: 2rem;
+    align-items: stretch;
+    background: var(--color-surface, var(--color-background));
+    border: 1px solid var(--color-border, rgba(127, 127, 127, 0.15));
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition-duration: 0.3s;
+    border-radius: 30px;
+  }
+
+  .content {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    gap: var(--spacing-4);
+    grid-column: 1;
+    z-index: 1;
+    padding: var(--spacing-5);
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  .icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: var(--border-radius);
+  }
+
+  .title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .desc {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    list-style: none;
+  }
+
+  .tag {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent-regular) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-regular) 20%, transparent);
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+
+  .btn.ghost {
+    background: transparent;
+    border: 1px solid var(--color-border, rgba(127, 127, 127, 0.25));
+    color: var(--color-text);
+  }
+
+  .btn.ghost:hover {
+    background: var(--color-border, rgba(127, 127, 127, 0.1));
+    transform: translateY(-1px);
+  }
+
+  .btn.ghost:active {
+    transform: translateY(0);
+  }
+
+  .thumb {
+    flex: 0 0 50%;
+    width: 50%;
+    height: 100%;
+    padding-top: 70px;
+    padding-left: 10px;
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: var(--border-radius);
+    object-position: top left;
+  }
+
+  @media (max-width: 600px) {
+    .project-card {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .content {
+      align-items: center;
+    }
+    .actions {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .content {
+      align-items: right;
+    }
+    .actions {
+      justify-content: center;
+    }
+    .thumb {
+      height: auto;
+    }
+    .thumb img {
+      aspect-ratio: auto;
+    }
+  }
+</style>

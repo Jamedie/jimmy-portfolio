@@ -1,0 +1,36 @@
+[
+  {
+    "slug": "ar-pokedex",
+    "year": 2024,
+    "icon": "/images/projects/ar-pokedex-icon.webp",
+    "featured": true,
+    "title": { "fr": "Pokédex en AR", "en": "AR Pokédex" },
+    "description": {
+      "fr": "Application AR réalisée avec Unity et AR Foundation.",
+      "en": "AR app built with Unity & AR Foundation."
+    },
+    "tech": ["Unity", "C#", "AR Foundation"],
+    "links": {
+      "demo": "https://example.com/demo",
+      "github": "https://github.com/Jamedie/ar-pokedex"
+    },
+    "cover": "/images/projects/ar-pokedex-cover.webp"
+  },
+  {
+    "slug": "portfolio-astro",
+    "year": 2025,
+    "icon": "/images/projects/logo-jimmy.svg",
+    "featured": false,
+    "title": { "fr": "Portfolio Astro", "en": "Astro Portfolio" },
+    "description": {
+      "fr": "Site statique ultra-rapide, i18n et design system.",
+      "en": "Blazing fast static site with i18n and design system."
+    },
+    "tech": ["Astro", "TypeScript", "CSS"],
+    "links": {
+      "demo": "/",
+      "github": "https://github.com/Jamedie/portfolio"
+    },
+    "cover": "/images/projects/portfolio-cover.webp"
+  }
+]

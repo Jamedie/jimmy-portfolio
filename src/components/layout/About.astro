@@ -1,6 +1,8 @@
 ---
 import Image from "astro/components/Image.astro";
 import rouroux from "../../assets/images/rouroux-ghibli.webp";
+import Icon from "../common/Icon.astro";
+import ResumeButton from "../common/ResumeButton.astro";
 
 export interface Props {
   i18n: any;
@@ -9,22 +11,17 @@ export interface Props {
 const { i18n } = Astro.props;
 ---
 
-<section class="about">
+<script is:inline></script>
+
+<section id="about">
   <div class="title-wrapper">
     <h2 class="title no-select">{i18n.about.title}</h2>
     <div class="line no-select"></div>
   </div>
   <div class="container">
     <div class="col left">
-      <h4 class="description no-select">{i18n.about.description}</h4>
-      <a
-        class="btn btn--primary"
-        href={i18n.hero.cta_resume_href}
-        rel="noopener"
-        target="_blank"
-      >
-        {i18n.hero.cta_resume}
-      </a>
+      <p class="description no-select">{i18n.about.description}</p>
+      <ResumeButton label={i18n.hero.cta_resume} />
     </div>
     <div class="col right">
       <div class="image-container">
@@ -43,10 +40,12 @@ const { i18n } = Astro.props;
 </section>
 
 <style>
-  .about {
+  #about {
     padding: var(--spacing-5) var(--spacing-4);
     background: var(--color-background);
     text-align: center;
+    max-width: var(--container-max-width, 1100px);
+    margin: 0 auto;
   }
 
   .title-wrapper {
@@ -74,8 +73,7 @@ const { i18n } = Astro.props;
   }
 
   .container {
-    max-width: var(--container-max-width, 1100px);
-    margin: 0 auto;
+    width: 100%;
     padding: 0 var(--spacing-4, 1rem);
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
@@ -103,42 +101,16 @@ const { i18n } = Astro.props;
     overflow: hidden;
   }
 
-  .about-image {
+  /* l’image reste en dessous */
+  .image-container img {
     display: block;
     width: 100%;
     height: auto;
+    max-width: 300px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
     position: relative;
     z-index: 0;
-    border-radius: inherit;
-  }
-
-  /* calques au-dessus de l’image */
-  .image-container::before,
-  .image-container::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 1;
-    transition:
-      box-shadow 0.2s ease,
-      opacity 0.2s ease;
-  }
-
-  /* effets au hover du container */
-  .image-container:hover::before {
-    box-shadow:
-      rgb(128, 0, 255) 4px 4px 0 inset,
-      transparent -4px -4px 0 inset;
-    transform: translate(-20px, -20px);
-  }
-
-  .image-container:hover::after {
-    box-shadow:
-      rgb(128, 0, 255) -4px -4px 0 inset,
-      transparent 4px 4px 0 inset;
-    transform: translate(20px, 20px);
   }
 
   @media (max-width: 900px) {

@@ -19,6 +19,17 @@
     "cta_resume": "Resume",
     "cta_resume_href": "/cv.pdf"
   },
+  "about": {
+    "title": "About me",
+    "description": "Passionate about technology,\nI am a mobile, web, and augmented reality developer.\nSpecialized in mobile development with Unity,\nI also design web applications and augmented reality experiences."
+  },
+  "projects": {
+    "title": "My projects"
+  },
+  "contact": {
+    "title": "Contact me",
+    "description": "You can contact me by email at the following address:\n\nmail@jimmygaucher.com\n\nor via the social networks below."
+  },
   "footer": {
     "description": "Jimmy Gaucher | © 2025 - All rights reserved."
   }

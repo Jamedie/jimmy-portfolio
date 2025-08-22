@@ -12,12 +12,25 @@ const { i18n, lang } = Astro.props;
 
 <header>
   <div class="navBar">
-    <img
-      class="logo"
-      src="/images/logo-jimmy.svg"
-      alt="Logo de Jimmy Gaucher"
-    />
-    <ThemeToggle />
+    <div class="left-actions">
+      <img
+        class="logo"
+        src="/images/logo-jimmy.svg"
+        alt="Logo de Jimmy Gaucher"
+      />
+      <div class="actions">
+        <div class="button-about">
+          <a href="#about">{i18n.about.title}</a>
+        </div>
+        <div class="button-projects">
+          <a href="#projects">{i18n.projects.title}</a>
+        </div>
+        <div class="button-contact">
+          <a href="#contact">{i18n.hero.cta_contact}</a>
+        </div>
+      </div>
+      <ThemeToggle />
+    </div>
     <QuickAccess
       label={i18n.common.quick_access}
       keycapLabel={i18n.common.keycap_label}
@@ -97,6 +110,17 @@ const { i18n, lang } = Astro.props;
     height: 1px;
     background: rgba(255, 255, 255, 0.22);
     pointer-events: none;
+  }
+
+  .left-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+  }
+
+  .actions {
+    display: flex;
+    gap: var(--spacing-4);
   }
 
   @supports not (

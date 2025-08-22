@@ -1,0 +1,78 @@
+---
+import ProjectsGrid from "../common/ProjectsGrid.astro";
+
+export interface Props {
+  i18n: any;
+  lang: "fr" | "en";
+}
+
+const { i18n, lang } = Astro.props;
+---
+
+<section id="projects">
+  <div class="title-wrapper">
+    <h2 class="title no-select">{i18n.projects.title}</h2>
+    <div class="line no-select"></div>
+  </div>
+  <div class="container">
+    <ProjectsGrid lang={lang} />
+  </div>
+</section>
+
+<style>
+  #projects {
+    max-width: var(--container-max-width, 1100px);
+    padding: var(--spacing-5) var(--spacing-4);
+    background: var(--color-background);
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .title-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4, 1rem);
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-5);
+  }
+
+  .title {
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .line {
+    width: 100%;
+    max-width: 300px;
+    height: 4px;
+    border-radius: var(--border-radius);
+    background: var(--accent-regular);
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .container {
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 600px) {
+    .container {
+      gap: var(--spacing-3);
+    }
+  }
+  @media (max-width: 400px) {
+    .container {
+      gap: var(--spacing-2);
+    }
+  }
+</style>

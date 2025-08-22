@@ -8,6 +8,8 @@ import SEO from "@/components/common/SEO.astro";
 
 import "@/styles/global.css";
 import About from "@/components/layout/About.astro";
+import Projects from "@/components/layout/Projects.astro";
+import Contact from "@/components/layout/Contact.astro";
 
 export interface Props {
   i18n: any;
@@ -54,6 +56,8 @@ const description = pageMeta?.description || i18n.common.site_description;
       <slot>
         <Hero i18n={i18n} lang={lang} />
         <About i18n={i18n} lang={lang} />
+        <Projects i18n={i18n} lang={lang} />
+        <Contact i18n={i18n} lang={lang} />
       </slot>
     </main>
 

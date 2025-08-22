@@ -1,0 +1,88 @@
+---
+import Icon from "./Icon.astro";
+
+export interface Props {
+  label: string;
+  href?: string;
+}
+
+const { label, href = "/cv.pdf" } = Astro.props;
+---
+
+<a
+  class="btn project"
+  href={href}
+  target="_blank"
+  rel="noopener"
+  aria-label={label}
+>
+  <span class="text">{label}</span>
+  <span class="sign"><Icon icon="arrow-right" size="1.25rem" /></span>
+</a>
+
+<style>
+  .btn.project {
+    --btn-bg: var(--accent-regular);
+    --btn-bg-dark: color-mix(in srgb, var(--accent-regular) 85%, black);
+    --btn-text: var(--accent-text-over, #fff);
+    --btn-height: 46px;
+    --btn-radius: var(--border-radius);
+
+    padding-right: 0.6rem;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    height: var(--btn-height);
+    border-radius: var(--btn-radius);
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.15s ease;
+  }
+
+  :global(.theme-dark) .btn.project {
+    background: var(--btn-bg-dark);
+  }
+
+  .btn.project:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  }
+
+  .btn.project .sign {
+    display: inline-grid;
+    place-items: center;
+    width: var(--btn-height);
+    height: var(--btn-height);
+    border-radius: inherit;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn.project .text {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition:
+      max-width 0.25s ease,
+      opacity 0.25s ease;
+  }
+
+  .btn.project:hover .text {
+    max-width: 10rem;
+    opacity: 1;
+    padding-right: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .btn.resume .text {
+      display: none;
+    }
+  }
+</style>

@@ -16,12 +16,28 @@
     "role_description": "Développeur mobile, toile & réalité augmentée,\ncréateur d’expériences numériques innovantes.",
     "cta_contact": "Me contacter",
     "cta_contact_href": "mailto:mail@jimmygaucher.com",
-    "cta_resume": "Voir Mon CV",
+    "cta_resume": "Voir Mon CV",
     "cta_resume_href": "/cv.pdf"
   },
   "about": {
     "title": "À propos de moi",
     "description": "Passionné par la technologie,\nje suis développeur mobile,\nweb et réalité augmentée.\nSpécialisé en développement mobile avec Unity,\nje conçois aussi des applications web et des expériences en réalité augmentée."
+  },
+  "projects": {
+    "title": "Mes projets",
+    "view_project": "Voir le projet",
+    "projects": [
+      {
+        "title": "Projet 1",
+        "description": "Description du projet 1",
+        "github": "https://github.com/Jamedie",
+        "live": "https://google.com"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Me contacter",
+    "description": "Vous pouvez me contacter par mail à l'adresse suivante : \n\nmail@jimmygaucher.com\n\nou via les réseaux sociaux ci-dessous."
   },
   "footer": {
     "description": "Jimmy Gaucher | © 2025 - Tous droits réservés."

@@ -2,92 +2,90 @@
 
 ![jimmy-portfolio](https://count.getloli.com/@jimmy-portfolio?name=jimmy-portfolio&theme=miku&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=0)
 
-Ce dépôt contient le code source de mon portfolio personnel, développé avec le framework **Astro**. Il met en avant mes compétences et mes projets en tant que développeur spécialisé en développement mobile (**Unity**), web et **réalité augmentée**.
+Ce dépôt contient le code source de mon portfolio personnel, développé avec le framework **Astro**.  
+Il met en avant mes compétences et mes projets en tant que développeur spécialisé en **développement mobile (Unity)**, **web** et **réalité augmentée**.
 
-➡️ **Lien vers le site** : [Lien vers votre site déployé à ajouter ici]
+➡️ **Site déployé** : [Lien vers le site à compléter]
 
 ---
 
 ## ✨ Caractéristiques
 
-- **Performances Optimales** : Construit avec Astro pour un site statique ultra-rapide.
-- **Design System Complet** : Utilisation d'un système de design modulaire en CSS pur avec des variables pour une maintenance et une cohérence facilitées.
-- **Thème Clair & Sombre** : Le site s'adapte automatiquement au thème du système d'exploitation de l'utilisateur (`prefers-color-scheme`).
-- **Responsive Design** : Une typographie et des espacements qui s'ajustent pour une expérience utilisateur parfaite sur tous les appareils, du mobile au bureau.
+- **Performances optimisées** : site statique ultra-rapide grâce à Astro.
+- **Design system modulable** : variables CSS, thèmes clair/sombre, composants réutilisables.
+- **Multilingue (fr/en)** via fichiers JSON d’i18n.
+- **SEO friendly** : balises `<SEO />` dédiées + `robots.txt`.
+- **Responsive design** : adapté desktop, tablette, mobile.
+- **Déploiement continu** via **Netlify**.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Framework** : Astro
+- **Framework** : [Astro](https://astro.build/)
 - **Langages** : HTML, CSS, TypeScript
-- **Déploiement** : [À compléter : Vercel, Netlify, GitHub Pages, etc.]
+- **Gestion multilingue** : JSON i18n (`src/i18n/fr.json`, `src/i18n/en.json`)
+- **Déploiement** : Netlify (`netlify.toml`)
 
 ---
 
-## 📂 Structure du Projet
-
-Le projet suit la structure standard d'Astro pour une organisation claire et logique.
+## 📂 Structure du projet
 
 ```
-
 /
-├── public/
-│ └── ... (fichiers statiques comme le favicon)
-└── src/
-├── assets/
-│ └── ... (images, SVGs optimisés)
-├── components/
-│ └── ... (composants Astro réutilisables, ex: Header.astro)
-├── layouts/
-│ └── Layout.astro (structure de base des pages)
-├── pages/
-│ └── index.astro (la page d'accueil)
-└── styles/
-├── font.css (définition des polices et tailles)
-└── global.css (système de design : variables, thèmes, styles globaux)
-
+├── public/                  # Fichiers statiques (favicon, images, robots.txt, redirects)
+│   └── images/              # Logos & covers de projets
+├── src/
+│   ├── assets/              # Images globales (hero, fonds…)
+│   ├── components/          # Composants Astro réutilisables
+│   │   ├── common/          # Boutons, cartes projets, logo, quick access...
+│   │   ├── icons/           # Icônes en TypeScript
+│   │   ├── intro/           # Écran d’intro animé
+│   │   └── layout/          # Header, Footer, Hero, Sections (About, Contact, Projects)
+│   ├── data/                # Données (projets JSON, types TS)
+│   ├── i18n/                # Traductions fr/en
+│   ├── layouts/             # Layout principal
+│   ├── pages/               # Pages multilingues ([lang]/index.astro)
+│   └── styles/              # CSS global + polices
+├── astro.config.mjs         # Configuration Astro
+├── netlify.toml             # Configuration déploiement Netlify
+├── tsconfig.json            # Config TypeScript
+├── package.json             # Dépendances & scripts
+└── ROADMAP.md               # Suivi du développement
 ```
 
 ---
 
-## 🚀 Démarrage Rapide
+## 🚀 Démarrage rapide
 
-Pour lancer ce projet en local, suivez ces étapes :
-
-1. **Cloner le dépôt**
+### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/[VOTRE-NOM-UTILISATEUR]/JIMMY-PORTFOLIO.git
+git clone https://github.com/[VOTRE-NOM-UTILISATEUR]/jimmy-portfolio.git
+cd jimmy-portfolio
 ```
 
-2. **Naviguer dans le dossier du projet**
-
-```bash
-cd JIMMY-PORTFOLIO
-```
-
-3. **Installer les dépendances**
+### 2. Installer les dépendances
 
 ```bash
 npm install
 ```
 
-4. **Lancer le serveur de développement**
+### 3. Lancer le serveur de développement
 
 ```bash
 npm run dev
 ```
 
-Votre site est maintenant accessible à l'adresse `http://localhost:4321`.
+Votre site est accessible sur : [http://localhost:4321](http://localhost:4321) 🎉
 
 ---
 
-## ⚙️ Scripts Disponibles
+## ⚙️ Scripts disponibles
 
-- `npm run dev` : Lance le serveur de développement avec le rechargement à chaud (HMR).
-- `npm run build` : Compile et optimise le site pour la production dans le dossier `dist/`.
-- `npm run preview` : Lance un serveur local pour prévisualiser le build de production.
+- `npm run dev` → Lance le serveur de développement avec HMR
+- `npm run build` → Compile et optimise le site pour la production (`/dist`)
+- `npm run preview` → Lance un serveur local pour prévisualiser le build
 
 ---
 

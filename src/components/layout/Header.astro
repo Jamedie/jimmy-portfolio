@@ -11,7 +11,6 @@ const { i18n, lang } = Astro.props;
 
 <header>
   <div class="navBar glass-panel">
-    <div class="backdrop" hidden></div>
     <div class="left-actions">
       <img
         class="logo"
@@ -45,13 +44,9 @@ const { i18n, lang } = Astro.props;
         <span class="bar"></span>
       </button>
     </div>
-
-    <!-- Drawer mobile -->
-    <Drawer i18n={i18n} />
-
-    <!-- Backdrop (caché mobile) -->
-    <div class="backdrop" hidden></div>
   </div>
+
+  <Drawer i18n={i18n} />
 </header>
 
 <script is:inline>
@@ -144,13 +139,6 @@ const { i18n, lang } = Astro.props;
   .logo {
     width: 40px;
     height: 40px;
-  }
-
-  .backdrop {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: rgba(0, 0, 0, 0.2);
   }
 
   /* Burger (caché desktop) */

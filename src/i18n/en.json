@@ -13,22 +13,31 @@
   "hero": {
     "greeting": "Hello!",
     "im": "I am",
-    "role_description": "Mobile, web & AR developer,\ncreating innovative digital experiences.",
+    "role_description": "Mobile, web & AR developer,\ncreator of innovative digital experiences.",
     "cta_contact": "Contact me",
     "cta_contact_href": "mailto:mail@jimmygaucher.com",
-    "cta_resume": "Resume",
+    "cta_resume": "View My Resume",
     "cta_resume_href": "/cv.pdf"
   },
   "about": {
-    "title": "About me",
+    "title": "About Me",
     "description": "Passionate about technology,\nI am a mobile, web, and augmented reality developer.\nSpecialized in mobile development with Unity,\nI also design web applications and augmented reality experiences."
   },
   "projects": {
-    "title": "My projects"
+    "title": "My Projects",
+    "view_project": "View Project",
+    "projects": [
+      {
+        "title": "Project 1",
+        "description": "Description of project 1",
+        "github": "https://github.com/Jamedie",
+        "live": "https://google.com"
+      }
+    ]
   },
   "contact": {
-    "title": "Contact me",
-    "description": "You can contact me by email at the following address:\n\nmail@jimmygaucher.com\n\nor via the social networks below."
+    "title": "Contact Me",
+    "description": "You can contact me by email or via the social networks below."
   },
   "footer": {
     "description": "Jimmy Gaucher | © 2025 - All rights reserved."

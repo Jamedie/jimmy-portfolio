@@ -7,12 +7,15 @@ export interface Props {
 }
 
 const { i18n, lang } = Astro.props;
+const title = i18n.projects.title;
 ---
 
 <section id="projects">
   <div class="title-wrapper">
-    <h2 class="title no-select">{i18n.projects.title}</h2>
-    <div class="line no-select"></div>
+    <div class="title-container">
+      <h2 class="title no-select">{title}</h2>
+      <div class="line no-select"></div>
+    </div>
   </div>
   <div class="container">
     <ProjectsGrid lang={lang} />
@@ -26,29 +29,6 @@ const { i18n, lang } = Astro.props;
     background: var(--color-background);
     text-align: center;
     margin: 0 auto;
-  }
-
-  .title-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    max-width: 50%;
-    padding: 0 var(--spacing-4, 1rem);
-    gap: var(--spacing-4);
-    margin-bottom: var(--spacing-5);
-  }
-
-  .title {
-    color: var(--color-text-primary);
-    margin: 0;
-  }
-
-  .line {
-    width: 100%;
-    max-width: 300px;
-    height: 4px;
-    border-radius: var(--border-radius);
-    background: var(--accent-regular);
   }
 
   .container {

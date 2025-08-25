@@ -46,10 +46,6 @@ const { label, href = "/cv.pdf" } = Astro.props;
       transform 0.15s ease;
   }
 
-  :global(.theme-dark) .btn.resume {
-    background: var(--btn-bg-dark);
-  }
-
   .btn.resume:hover {
     transform: translateY(-1px);
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
@@ -78,11 +74,5 @@ const { label, href = "/cv.pdf" } = Astro.props;
     max-width: 10rem;
     opacity: 1;
     padding-right: 1rem;
-  }
-
-  @media (max-width: 900px) {
-    .btn.resume .text {
-      display: none;
-    }
   }
 </style>

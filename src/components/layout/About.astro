@@ -9,14 +9,17 @@ export interface Props {
   lang: "fr" | "en";
 }
 const { i18n } = Astro.props;
+const title = i18n.about.title;
 ---
 
 <script is:inline></script>
 
 <section id="about">
   <div class="title-wrapper">
-    <h2 class="title no-select">{i18n.about.title}</h2>
-    <div class="line no-select"></div>
+    <div class="title-container">
+      <h2 class="title no-select">{title}</h2>
+      <div class="line no-select"></div>
+    </div>
   </div>
   <div class="container">
     <div class="col left">
@@ -46,30 +49,6 @@ const { i18n } = Astro.props;
     text-align: center;
     max-width: var(--container-max-width, 1100px);
     margin: 0 auto;
-  }
-
-  .title-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    max-width: var(--container-max-width, 1100px);
-
-    padding: 0 var(--spacing-4, 1rem);
-    gap: var(--spacing-4);
-    margin-bottom: var(--spacing-5);
-  }
-
-  .title {
-    color: var(--color-text-primary);
-    margin: 0;
-  }
-
-  .line {
-    width: 100%;
-    max-width: 300px;
-    height: 4px;
-    border-radius: var(--border-radius);
-    background: var(--accent-regular);
   }
 
   .container {
@@ -116,6 +95,10 @@ const { i18n } = Astro.props;
   @media (max-width: 900px) {
     .container {
       grid-template-columns: 1fr;
+    }
+
+    .image-container img {
+      display: none;
     }
   }
 </style>

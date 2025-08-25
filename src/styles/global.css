@@ -151,7 +151,7 @@ h5 {
 /* ======================================================= */
 /* 4. STYLES RESPONSIVES                                 */
 /* ======================================================= */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   h1 {
     font-size: var(--text-3xl);
   }
@@ -173,7 +173,7 @@ h5 {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   h1 {
     font-size: var(--text-2xl);
   }

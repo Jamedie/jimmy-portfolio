@@ -118,4 +118,14 @@ const { label, keycapLabel } = Astro.props;
   button:hover .keycap-glass {
     background: rgba(255, 255, 255, 0.25);
   }
+
+  @media (max-width: 1024px) {
+    #hotkey-badge {
+      display: none;
+    }
+
+    .label {
+      display: none;
+    }
+  }
 </style>

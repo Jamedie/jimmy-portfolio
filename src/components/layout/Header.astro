@@ -1,41 +1,92 @@
 ---
 import QuickAccess from "../common/QuickAccess.astro";
-import ThemeToggle from "../common/ThemeToggle.astro";
+import Drawer from "../common/Drawer.astro";
 
 export interface Props {
   i18n: any;
   lang: "fr" | "en";
 }
-
 const { i18n, lang } = Astro.props;
 ---
 
 <header>
-  <div class="navBar">
+  <div class="navBar glass-panel">
+    <div class="backdrop" hidden></div>
     <div class="left-actions">
       <img
         class="logo"
         src="/images/logo-jimmy.svg"
         alt="Logo de Jimmy Gaucher"
       />
-      <div class="actions">
-        <div class="button-about">
-          <a href="#about">{i18n.about.title}</a>
-        </div>
-        <div class="button-projects">
-          <a href="#projects">{i18n.projects.title}</a>
-        </div>
-        <div class="button-contact">
-          <a href="#contact">{i18n.hero.cta_contact}</a>
-        </div>
-      </div>
+
+      <!-- NAV (visible desktop) -->
+      <nav class="actions" aria-label="Main">
+        <a href="#about">{i18n.about.title}</a>
+        <a href="#projects">{i18n.projects.title}</a>
+        <a href="#contact">{i18n.hero.cta_contact}</a>
+      </nav>
     </div>
-    <QuickAccess
-      label={i18n.common.quick_access}
-      keycapLabel={i18n.common.keycap_label}
-    />
+
+    <!-- droite: QuickAccess + Burger -->
+    <div class="right-actions">
+      <QuickAccess
+        label={i18n.common.quick_access}
+        keycapLabel={i18n.common.keycap_label}
+      />
+      <button
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-label="Ouvrir le menu"
+        aria-controls="mobile-drawer"
+        aria-expanded="false"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+
+    <!-- Drawer mobile -->
+    <Drawer i18n={i18n} />
+
+    <!-- Backdrop (caché mobile) -->
+    <div class="backdrop" hidden></div>
   </div>
 </header>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("menu-toggle");
+    const drawer = document.getElementById("mobile-drawer");
+    const backdrop = document.querySelector(".backdrop");
+
+    console.log("Menu elements:", { btn, drawer, backdrop });
+
+    function toggle(open) {
+      const isOpen =
+        open ?? !document.documentElement.classList.contains("menu-open");
+      console.log("Toggle called, isOpen:", isOpen);
+      document.documentElement.classList.toggle("menu-open", isOpen);
+      btn?.setAttribute("aria-expanded", String(isOpen));
+      if (backdrop) backdrop.hidden = !isOpen;
+      document.body.style.overflow = isOpen ? "hidden" : "";
+    }
+
+    btn?.addEventListener("click", () => {
+      console.log("Button clicked");
+      toggle();
+    });
+    drawer
+      ?.querySelectorAll("[data-close]")
+      .forEach((a) => a.addEventListener("click", () => toggle(false)));
+    backdrop?.addEventListener("click", () => toggle(false));
+
+    // ESC pour fermer
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toggle(false);
+    });
+  });
+</script>
 
 <style>
   :root {
@@ -45,7 +96,6 @@ const { i18n, lang } = Astro.props;
     --glass-saturate: 160%;
   }
 
-  /* Header: positionné en haut, centré */
   header {
     position: fixed;
     top: 0;
@@ -58,57 +108,17 @@ const { i18n, lang } = Astro.props;
     pointer-events: none;
   }
 
-  /* Plaque “liquid glass” */
   .navBar {
     pointer-events: auto;
     position: relative;
     height: var(--header-height);
     width: min(1100px, 90%);
     padding: 0 var(--spacing-4);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     border-radius: var(--glass-radius);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.1)
-    );
-    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-    -webkit-backdrop-filter: blur(var(--glass-blur))
-      saturate(var(--glass-saturate));
-    box-shadow:
-      0 10px 30px rgba(0, 0, 0, 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.25);
     overflow: hidden;
-  }
-
-  .navBar::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.35),
-      transparent 45%
-    );
-    mix-blend-mode: screen;
-    pointer-events: none;
-  }
-
-  .navBar::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.22);
-    pointer-events: none;
   }
 
   .left-actions {
@@ -116,46 +126,106 @@ const { i18n, lang } = Astro.props;
     align-items: center;
     gap: var(--spacing-4);
   }
-
   .actions {
     display: flex;
     gap: var(--spacing-4);
   }
-
-  @supports not (
-    (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
-  ) {
-    .navBar {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-    }
-    .navBar::before {
-      display: none;
-    }
+  .actions a {
+    text-decoration: none;
+    font-weight: 600;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .navBar {
-      background: linear-gradient(
-        to bottom,
-        color-mix(in oklab, var(--gray-800) 20%, transparent),
-        color-mix(in oklab, var(--gray-50) 10%, transparent)
-      );
-      border-color: rgba(255, 255, 255, 0.14);
-      box-shadow:
-        0 12px 34px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18);
-    }
-  }
-
-  .navBar:hover {
-    box-shadow:
-      0 14px 36px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  .right-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
   }
 
   .logo {
     width: 40px;
     height: 40px;
+  }
+
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  /* Burger (caché desktop) */
+  .menu-toggle {
+    display: none;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .menu-toggle .bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 5px auto;
+    background: currentColor;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .theme-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    justify-content: center;
+    padding: 0.9rem 1rem;
+  }
+
+  /* Ouvert */
+
+  :global(.menu-open) .menu-toggle .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  :global(.menu-open) .menu-toggle .bar:nth-child(2) {
+    opacity: 0;
+  }
+  :global(.menu-open) .menu-toggle .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .actions {
+      display: none;
+    } /* on cache la nav inline */
+    .menu-toggle {
+      display: inline-block;
+    }
+    .navBar {
+      width: min(100%, 96%);
+    }
+  }
+
+  /* desktop */
+  @media (min-width: 721px) {
+    .navBar {
+      overflow: hidden;
+    }
+  }
+  /* mobile */
+  @media (max-width: 720px) {
+    .navBar {
+      overflow: visible;
+    }
+  }
+
+  /* Accessibilité focus */
+  a:focus-visible,
+  .menu-toggle:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent-regular) 60%, white);
+    outline-offset: 2px;
   }
 </style>

@@ -1,0 +1,69 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+export interface Props {
+  i18n: any;
+}
+
+const { i18n } = Astro.props;
+---
+
+<div
+  id="mobile-drawer"
+  class="drawer glass-panel"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation"
+>
+  <nav class="drawer-nav">
+    <a href="#about" data-close>{i18n.about.title}</a>
+    <a href="#projects" data-close>{i18n.projects.title}</a>
+    <a href="#contact" data-close>{i18n.hero.cta_contact}</a>
+    <div class="theme-toggle-container">
+      <ThemeToggle />
+    </div>
+  </nav>
+</div>
+
+<style>
+  .drawer {
+    position: absolute;
+    right: var(--spacing-4);
+    top: calc(100% + 0.5rem);
+    width: min(320px, 88vw);
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 100;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .drawer-nav a {
+    padding: 0.9rem 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--accent-regular);
+  }
+
+  .theme-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: 0.9rem 1rem;
+  }
+
+  :global(.menu-open) .drawer {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>

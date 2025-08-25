@@ -8,6 +8,6 @@ export type Project = {
   description: Localized;
   tech: string[];
   links: { demo?: string; github?: string };
-  cover: string; // relative to public/
-  icon: string; // relative to public/
+  cover: string;
+  icon: string;
 };

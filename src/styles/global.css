@@ -6,6 +6,8 @@
 /* 1. TOKENS DE DESIGN ET THÈME PAR DÉFAUT (Clair)        */
 /* ======================================================= */
 :root {
+  --sbw: 0px;
+
   /* --- Tokens de couleur --- */
   --gray-0: #090b11;
   --gray-50: #141925;

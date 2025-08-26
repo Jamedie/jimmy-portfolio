@@ -1,0 +1,68 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<button class="close-btn" aria-label="Fermer le menu">
+  <Icon icon="close" size="2rem" />
+</button>
+
+<style>
+  .close-btn {
+    position: absolute;
+    top: var(--spacing-10);
+    right: var(--spacing-10);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+
+    background: var(--color-surface);
+    color: var(--accent-regular);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.1s ease;
+  }
+
+  .close-btn:hover {
+    /* léger foncé de la surface + accent plus soutenu */
+    background: color-mix(
+      in srgb,
+      var(--color-surface) 88%,
+      var(--color-text-primary) 12%
+    );
+    color: var(--accent-dark);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    transform: translateY(-1px);
+  }
+
+  .close-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  }
+
+  .close-btn:focus-visible {
+    outline: 2px solid var(--accent-regular);
+    outline-offset: 3px;
+  }
+
+  /* optionnel */
+  .close-btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  /* respect du reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .close-btn {
+      transition: none;
+    }
+  }
+</style>

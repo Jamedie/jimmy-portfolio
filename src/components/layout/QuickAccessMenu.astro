@@ -1,8 +1,8 @@
 ---
-import Icon from "../common/Icon.astro";
 import LanguageSwitcher from "../common/LanguageSwitcher.astro";
 import QuickAccessTips from "../common/QuickAccessTips.astro";
 import ThemeToggle from "../common/ThemeToggle.astro";
+import CloseButton from "../common/CloseButton.astro";
 
 interface Props {
   githubUsername?: string;
@@ -27,59 +27,72 @@ const languages = [
 const { i18n, keycapLabel } = Astro.props;
 ---
 
-<!--
-QuickAccessMenu.astro
-• Menu plein écran qui bloque le scroll
-• Thème: clair/sombre/système (persisté)
-• Langue: liste dynamique via props
-• Activité GitHub publique (10 derniers events)
-• Raccourcis en bas à gauche (Ctrl/⌘+K, T, L, Échap)
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const root = document.getElementById("quick-access-menu");
 
+    const html = document.documentElement;
+    const closeBtn = root?.querySelector(".close-btn");
 
-Utilisation:
-<QuickAccessMenu githubUsername="tonUser" languages={[{code:'fr',label:'Français'},{code:'en',label:'English'}]} />
+    // Scroll lock
+    const getScrollbarWidth = () =>
+      Math.max(0, window.innerWidth - document.documentElement.clientWidth);
 
+    function applyScrollLock() {
+      if (!root) return;
+      const isOpen = root.getAttribute("data-open") === "1";
 
-Styles: autonome via <style> ci-dessous (pas besoin de Tailwind/React)
--->
-<script>
-  const root = document.getElementById("quick-access-menu");
-  const html = document.documentElement;
-
-  function applyScrollLock() {
-    if (!root) return;
-    const isOpen = root.getAttribute("data-open") === "1";
-    html.style.overflow = isOpen ? "hidden" : "";
-  }
-
-  applyScrollLock();
-
-  if (root) {
-    const obs = new MutationObserver(applyScrollLock);
-    obs.observe(root, { attributes: true, attributeFilter: ["data-open"] });
-  }
-
-  // Fonction pour changer la langue
-  function toggleLanguage() {
-    const currentLang = root?.getAttribute("data-lang") || "fr";
-    const newLang = currentLang === "fr" ? "en" : "fr";
-
-    // Changer l'URL pour la nouvelle langue
-    const currentPath = window.location.pathname;
-    const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${newLang}`);
-    window.location.href = newPath;
-  }
-
-  // Écouter les raccourcis clavier
-  document.addEventListener("keydown", (e) => {
-    // Si le menu est ouvert et qu'on appuie sur L, changer la langue
-    if (
-      root?.getAttribute("data-open") === "1" &&
-      e.key.toLowerCase() === "l"
-    ) {
-      e.preventDefault();
-      toggleLanguage();
+      if (isOpen) {
+        const sbw = getScrollbarWidth();
+        html.style.setProperty("--sbw", sbw + "px");
+        html.classList.add("qa-lock-scroll");
+      } else {
+        html.classList.remove("qa-lock-scroll");
+        html.style.removeProperty("--sbw");
+      }
     }
+
+    window.addEventListener("resize", () => {
+      if (root?.getAttribute("data-open") === "1") {
+        html.style.setProperty("--sbw", getScrollbarWidth() + "px");
+      }
+    });
+
+    applyScrollLock();
+    new MutationObserver(applyScrollLock).observe(root, {
+      attributes: true,
+      attributeFilter: ["data-open"],
+    });
+
+    // Fermetures
+    closeBtn?.addEventListener("click", () =>
+      root.setAttribute("data-open", "0")
+    );
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && root.getAttribute("data-open") === "1") {
+        e.preventDefault();
+        root.setAttribute("data-open", "0");
+      }
+    });
+
+    //Changement de langue
+    const toggleLanguage = () => {
+      const currentLang = root.getAttribute("data-lang");
+      const newLang = currentLang === "fr" ? "en" : "fr";
+
+      // Changer l'URL pour la nouvelle langue
+      const currentPath = window.location.pathname;
+      const newPath = currentPath.replace(/^\/[a-z]{2}/, `/${newLang}`);
+      window.location.href = newPath;
+    };
+
+    // Ecoute des raccourcis clavier
+    document.addEventListener("keydown", (e) => {
+      if (e.key.toLowerCase() === "l") {
+        e.preventDefault();
+        toggleLanguage();
+      }
+    });
   });
 </script>
 
@@ -90,18 +103,11 @@ Styles: autonome via <style> ci-dessous (pas besoin de Tailwind/React)
   data-lang={lang || "fr"}
 >
   <div class="qa-overlay"></div>
-  <div
-    class="qa-panel"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Quick Access"
-    data-qa-panel
-  >
-    <div class="close-btn" aria-label="Fermer le menu">
-      <Icon icon="close" size="2rem" />
-    </div>
 
-    <div class="left-layout">
+  <div class="qa-panel">
+    <CloseButton />
+
+    <div class="right-layout">
       <!-- Actions -->
       <div class="qa-actions-container">
         <ThemeToggle />
@@ -114,6 +120,7 @@ Styles: autonome via <style> ci-dessous (pas besoin de Tailwind/React)
       </div>
     </div>
 
+    <!-- Raccourcis clavier -->
     <QuickAccessTips
       position="bl"
       offset="var(--spacing-15)"
@@ -124,6 +131,14 @@ Styles: autonome via <style> ci-dessous (pas besoin de Tailwind/React)
 </section>
 
 <style>
+  html.qa-lock-scroll {
+    overflow: hidden;
+  }
+
+  html.qa-lock-scroll body {
+    padding-inline-end: var(--sbw);
+  }
+
   #quick-access-menu {
     position: fixed;
     inset: 0;
@@ -134,8 +149,6 @@ Styles: autonome via <style> ci-dessous (pas besoin de Tailwind/React)
 
     width: 100%;
     height: 100vh;
-    background: var(--color-background-85a);
-    backdrop-filter: blur(2px);
 
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -150,9 +163,62 @@ Styles: autonome via <style> ci-dessous (pas besoin de Tailwind/React)
   }
 
   .qa-overlay {
-    display: none !important;
+    position: fixed;
+    inset: 0;
+    background: var(--color-background-85a);
+    backdrop-filter: blur(2px);
+    z-index: 0;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  #quick-access-menu[data-open="1"] .qa-overlay {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .qa-panel {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  #quick-access-menu[data-open="1"] .qa-panel {
+    pointer-events: auto;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: var(--spacing-10);
+    right: var(--spacing-10);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2);
+
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius);
+    color: var(--accent-regular);
+    transition: color 0.2s ease;
+  }
+
+  .close-btn:hover {
+  }
+
+  .right-layout {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-10);
+    padding: var(--spacing-10);
   }
 </style>

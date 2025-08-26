@@ -35,6 +35,19 @@
       }
     ]
   },
+  "quickAccess": {
+    "language": "Langue",
+    "actions": "Centre d'actions",
+    "activities": "Activités récentes",
+    "shortcuts": {
+      "header": "Conseil : Raccourcis",
+      "description": "Naviguez facilement sur le site grâce aux raccourcis clavier.",
+      "open": "Ouvrir le menu",
+      "close": "Fermer le menu",
+      "changeTheme": "Changer le thème",
+      "changeLanguage": "Changer la langue"
+    }
+  },
   "contact": {
     "title": "Me contacter",
     "description": "Vous pouvez me contacter par mail à l'adresse suivante ou via les réseaux sociaux ci-dessous."

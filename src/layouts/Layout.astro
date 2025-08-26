@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Hero from "@/components/layout/Hero.astro";
 import IntroScreen from "@/components/intro/IntroScreen.astro";
+import QuickAccessMenu from "@/components/layout/QuickAccessMenu.astro";
 import SEO from "@/components/common/SEO.astro";
 
 import "@/styles/global.css";
@@ -60,6 +61,13 @@ const description = pageMeta?.description || i18n.common.site_description;
         <Projects i18n={i18n} lang={lang} />
         <Contact i18n={i18n} lang={lang} />
         <ScrollToTop />
+        <QuickAccessMenu
+          githubUsername="Jamedie"
+          i18n={i18n}
+          lang={lang}
+          initialOpen={false}
+          keycapLabel={i18n.common.keycap_label}
+        />
       </slot>
     </main>
 

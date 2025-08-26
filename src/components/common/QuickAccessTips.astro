@@ -1,0 +1,110 @@
+---
+import Icon from "../common/Icon.astro";
+
+interface Props {
+  i18n: any;
+  keycapLabel?: string;
+  position?: "bl" | "br" | "tl" | "tr";
+  offset?: string;
+}
+
+const {
+  i18n,
+  keycapLabel = "Q",
+  position = "bl",
+  offset = "var(--spacing-15)",
+} = Astro.props as Props;
+
+const stylePos =
+  position === "bl"
+    ? `left:${offset};bottom:${offset};`
+    : position === "br"
+      ? `right:${offset};bottom:${offset};`
+      : position === "tl"
+        ? `left:${offset};top:${offset};`
+        : `right:${offset};top:${offset};`;
+---
+
+<div class="qa-tips" style={stylePos}>
+  <div class="qa-tips-header">
+    <Icon icon="keyboard" size="2rem" />
+    <h4 class="no-select">{i18n.quickAccess.shortcuts.header}</h4>
+  </div>
+
+  <div class="qa-tip-desc no-select">
+    {i18n.quickAccess.shortcuts.description}
+  </div>
+
+  <div class="qa-tips-list">
+    <div class="qa-tip">
+      <p class="no-select">{i18n.quickAccess.shortcuts.open}</p>
+      <kbd class="no-select">{keycapLabel}</kbd>
+    </div>
+    <div class="qa-separator"></div>
+
+    <div class="qa-tip">
+      <p class="no-select">{i18n.quickAccess.shortcuts.close}</p>
+      <p class="no-select"><kbd>{keycapLabel}</kbd> or <kbd>Esc</kbd></p>
+    </div>
+    <div class="qa-separator"></div>
+
+    <div class="qa-tip">
+      <p class="no-select">{i18n.quickAccess.shortcuts.changeTheme}</p>
+      <kbd class="no-select">D</kbd>
+    </div>
+    <div class="qa-separator"></div>
+
+    <div class="qa-tip">
+      <p class="no-select">{i18n.quickAccess.shortcuts.changeLanguage}</p>
+      <kbd class="no-select">L</kbd>
+    </div>
+  </div>
+</div>
+
+<style>
+  .qa-tips {
+    position: fixed;
+    z-index: 50;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+    pointer-events: auto;
+  }
+
+  .qa-tips-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .qa-tip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+    color: var(--color-text-primary);
+    opacity: 0.95;
+  }
+
+  .qa-tip-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  .qa-tip kbd {
+    display: inline-block;
+    min-width: 1.6em;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 0.1rem 0.4rem;
+    font-size: 12px;
+    background: transparent;
+  }
+
+  .qa-separator {
+    border-top: 1px solid var(--color-border);
+    margin: var(--spacing-2) 0;
+  }
+</style>

@@ -43,7 +43,7 @@ const { label, keycapLabel } = Astro.props;
       const k = (ev.key || "").toLowerCase();
       if (openKeys.has(k)) {
         ev.preventDefault();
-        openMenu();
+        ToggleMenu();
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -56,11 +56,26 @@ const { label, keycapLabel } = Astro.props;
     });
     observer.observe(document.body, { childList: true, subtree: true });
 
-    btn.addEventListener("click", openMenu);
+    btn.addEventListener("click", ToggleMenu);
 
-    function openMenu() {
-      console.log("Menu ouvert");
-      // TODO: ouvre ton vrai menu ici
+    function ToggleMenu() {
+      if (!document.getElementById("quick-access-menu")) return;
+      if (document.getElementById("quick-access-menu").dataset.open === "1") {
+        document.getElementById("quick-access-menu").dataset.open = "0";
+        return;
+      }
+
+      document.getElementById("quick-access-menu").dataset.open = "1";
+    }
+
+    //if user press escape, close the menu
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    function closeMenu() {
+      if (!document.getElementById("quick-access-menu")) return;
+      document.getElementById("quick-access-menu").dataset.open = "0";
     }
   });
 </script>

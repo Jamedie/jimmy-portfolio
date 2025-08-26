@@ -9,13 +9,23 @@ import Icon from "./Icon.astro";
 
     if (toggleBtn) {
       toggleBtn.addEventListener("click", () => {
-        document.documentElement.classList.toggle("theme-dark");
-
-        const isDark =
-          document.documentElement.classList.contains("theme-dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
+        toggleTheme();
       });
     }
+
+    function toggleTheme() {
+      document.documentElement.classList.toggle("theme-dark");
+
+      const isDark = document.documentElement.classList.contains("theme-dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    }
+
+    // Listen for keydown events on the document
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "d") {
+        toggleTheme();
+      }
+    });
   });
 </script>
 

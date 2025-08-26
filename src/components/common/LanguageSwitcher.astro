@@ -1,0 +1,41 @@
+---
+export interface Props {
+  languages: { code: string; label: string }[];
+  currentLang: string;
+}
+
+const { languages, currentLang } = Astro.props;
+---
+
+<div class="language-switcher">
+  <select id="language-switcher" name="language" aria-label="Changer la langue">
+    {
+      languages.map((lang) => (
+        <option value={lang.code} selected={lang.code === currentLang}>
+          {lang.label}
+        </option>
+      ))
+    }
+  </select>
+</div>
+
+<script>
+  function handleLanguageChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    const newLang = target.value;
+    window.location.href = window.location.href.replace(
+      /\/[a-z]{2}\//,
+      `/${newLang}/`
+    );
+  }
+
+  // Attach the event listener properly
+  document.addEventListener("DOMContentLoaded", () => {
+    const languageSwitcher = document.getElementById(
+      "language-switcher"
+    ) as HTMLSelectElement;
+    if (languageSwitcher) {
+      languageSwitcher.addEventListener("change", handleLanguageChange);
+    }
+  });
+</script>

@@ -35,6 +35,19 @@
       }
     ]
   },
+  "quickAccess": {
+    "language": "Language",
+    "actions": "Actions center",
+    "activities": "Recent activities",
+    "shortcuts": {
+      "header": "Tip: Keyboard shortcuts",
+      "description": "Navigate easily through the website using keyboard shortcuts.",
+      "open": "Open menu",
+      "close": "Close menu",
+      "changeTheme": "Change theme",
+      "changeLanguage": "Change language"
+    }
+  },
   "contact": {
     "title": "Contact Me",
     "description": "You can contact me by email or via the social networks below."

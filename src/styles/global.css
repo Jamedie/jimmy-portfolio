@@ -34,6 +34,11 @@
 
   /* --- Variables sémantiques pour le THÈME CLAIR (par défaut) --- */
   --color-background: var(--gray-999);
+  --color-background-85a: color-mix(
+    in srgb,
+    var(--color-background) 85%,
+    transparent
+  );
   --color-solid: var(--gray-100);
   --color-surface: var(--gray-900);
   --color-border: var(--gray-800);
@@ -51,6 +56,11 @@
 /* ======================================================= */
 :root.theme-dark {
   --color-background: var(--gray-0);
+  --color-background-85a: color-mix(
+    in srgb,
+    var(--color-background) 85%,
+    transparent
+  );
   --color-solid: var(--gray-800);
   --color-surface: var(--gray-50);
   --color-border: var(--gray-100);
@@ -100,7 +110,6 @@ h5 {
   font-family: var(--font-brand);
   font-weight: 700;
   color: var(--color-text-primary);
-  margin: 0 0 1rem;
 }
 h1 {
   font-size: var(--text-4xl);

@@ -38,15 +38,14 @@ Ce document liste les étapes de développement passées, en cours et futures po
 
 ## 🗂️ Organisation du travail
 
-- **Branche principale** : `main` → déploiement auto via Netlify  
-- **Branches de features** : `feature/[nom]` → pour chaque nouvelle fonctionnalité  
-- **Issues GitHub** pour le suivi des tâches et corrections  
+- **Branche principale** : `main` → déploiement auto via Netlify
+- **Branches de features** : `feature/[nom]` → pour chaque nouvelle fonctionnalité
+- **Issues GitHub** pour le suivi des tâches et corrections
 
 ---
 
 ## 📅 Objectif
 
-- **Version stable 1.0** : Portfolio complet bilingue avec SEO et projets affichés (✅ déjà atteint)  
-- **Version 1.5** : Ajout animations, optimisations SEO et accessibilité (🚧 en cours)  
-- **Version 2.0** : Refonte graphique + nouvelles fonctionnalités (📌 à venir)  
-
+- **Version stable 1.0** : Portfolio complet bilingue avec SEO et projets affichés (✅ déjà atteint)
+- **Version 1.5** : Ajout animations, optimisations SEO et accessibilité (🚧 en cours)
+- **Version 2.0** : Refonte graphique + nouvelles fonctionnalités (📌 à venir)

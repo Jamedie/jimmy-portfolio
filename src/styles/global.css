@@ -313,6 +313,19 @@ h5 {
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
+/* scroll lock */
+html.qa-lock-scroll {
+  overflow: hidden;
+}
+
+html.qa-lock-scroll body {
+  padding-inline-end: var(--sbw);
+}
+
+html.qa-lock-scroll .sb-comp {
+  padding-inline-end: var(--sbw);
+}
+
 /* mode sombre */
 @media (prefers-color-scheme: dark) {
   .glass-panel {

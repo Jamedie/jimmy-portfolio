@@ -3,7 +3,11 @@
     "site_name": "Jimmy Gaucher | Développeur",
     "site_description": "Passionné par la technologie, je suis développeur mobile, web et réalité augmentée. Spécialisé en développement mobile avec Unity, je conçois aussi des applications web et des expériences en réalité augmentée.",
     "quick_access": "Accès rapide",
-    "keycap_label": "A"
+    "keycap_label": "A",
+    "languages": {
+      "fr": "Français",
+      "en": "Anglais"
+    }
   },
   "home": {
     "page_name": "Jimmy Gaucher | Développeur",
@@ -36,7 +40,6 @@
     ]
   },
   "quickAccess": {
-    "language": "Langue",
     "actions": "Centre d'actions",
     "activities": "Activités récentes",
     "shortcuts": {
@@ -44,8 +47,19 @@
       "description": "Naviguez facilement sur le site grâce aux raccourcis clavier.",
       "open": "Ouvrir le menu",
       "close": "Fermer le menu",
-      "changeTheme": "Changer le thème",
-      "changeLanguage": "Changer la langue"
+      "changeTheme": "Changer de thème",
+      "changeLanguage": "Changer de langue"
+    },
+    "theme": {
+      "label": "Thème actuel",
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système"
+    },
+    "language": {
+      "label": "Langue",
+      "fr": "Français",
+      "en": "Anglais"
     }
   },
   "contact": {

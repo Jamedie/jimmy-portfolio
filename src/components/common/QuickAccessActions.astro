@@ -1,0 +1,45 @@
+---
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import ThemeModeCycle from "./ThemeModeCycle.astro";
+
+export interface Props {
+  i18n: any;
+  lang: "fr" | "en";
+}
+
+const { i18n, lang } = Astro.props as Props;
+---
+
+<section
+  class={`qa-actions-container`}
+  role="group"
+  aria-label="Centre d'actions"
+>
+  <h4 class="no-select">{i18n.quickAccess.actions}</h4>
+  <div class="qa-actions-grid">
+    <div class="qa-actions-row">
+      <ThemeModeCycle i18n={i18n} lang={lang} />
+    </div>
+    <div class="qa-actions-row">
+      <LanguageSwitcher i18n={i18n} lang={lang} />
+    </div>
+
+    <!-- Slot si un jour tu veux ajouter d’autres actions -->
+    <slot />
+  </div>
+</section>
+
+<style>
+  .qa-actions-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  .qa-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-4);
+    max-width: 400px;
+  }
+</style>

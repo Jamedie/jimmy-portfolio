@@ -1,41 +1,136 @@
 ---
+import Icon from "./Icon.astro";
+
 export interface Props {
-  languages: { code: string; label: string }[];
-  currentLang: string;
+  i18n: any;
+  lang: "fr" | "en";
 }
 
-const { languages, currentLang } = Astro.props;
+const { i18n, lang } = Astro.props;
 ---
 
-<div class="language-switcher">
-  <select id="language-switcher" name="language" aria-label="Changer la langue">
-    {
-      languages.map((lang) => (
-        <option value={lang.code} selected={lang.code === currentLang}>
-          {lang.label}
-        </option>
-      ))
-    }
-  </select>
-</div>
-
-<script>
-  function handleLanguageChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    const newLang = target.value;
-    window.location.href = window.location.href.replace(
-      /\/[a-z]{2}\//,
-      `/${newLang}/`
-    );
-  }
-
-  // Attach the event listener properly
+<script is:inline define:vars={{ currentLang: lang }}>
   document.addEventListener("DOMContentLoaded", () => {
-    const languageSwitcher = document.getElementById(
-      "language-switcher"
-    ) as HTMLSelectElement;
+    const languageSwitcher = document.getElementById("language-switcher");
     if (languageSwitcher) {
-      languageSwitcher.addEventListener("change", handleLanguageChange);
+      languageSwitcher.addEventListener("click", () => {
+        const newLang = currentLang === "fr" ? "en" : "fr";
+        const currentUrl = window.location.href;
+
+        if (currentUrl.includes(`/${currentLang}/`)) {
+          window.location.href = currentUrl.replace(
+            `/${currentLang}/`,
+            `/${newLang}/`
+          );
+        } else if (currentUrl.endsWith(`/${currentLang}`)) {
+          window.location.href = currentUrl.replace(
+            `/${currentLang}`,
+            `/${newLang}`
+          );
+        } else {
+          window.location.href = currentUrl.replace(/\/$/, "") + `/${newLang}`;
+        }
+      });
     }
   });
 </script>
+
+<div class="language-switcher">
+  <button
+    type="button"
+    class="action-btn"
+    id="language-switcher"
+    aria-label="language"
+  >
+    <span class="icon"><Icon icon="translate" /></span>
+    <span class="action-label">{i18n.quickAccess.language.label}</span>
+    <span class="action-mode">
+      {
+        lang === "fr"
+          ? i18n.quickAccess.language.fr
+          : i18n.quickAccess.language.en
+      }
+    </span>
+  </button>
+</div>
+
+<style>
+  .language-switcher {
+    display: inline-flex;
+  }
+
+  .action-btn {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "icon title"
+      "icon state";
+    align-items: center;
+    column-gap: var(--spacing-4);
+    row-gap: var(--spacing-2);
+
+    padding: 0.9rem 1.1rem;
+    min-width: 180px;
+
+    background: color-mix(in srgb, var(--color-surface) 96%, transparent);
+    border: 1px solid var(--color-border);
+    border-radius: calc(var(--border-radius) + 2px);
+    color: var(--color-text-primary);
+    cursor: pointer;
+
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.12s ease;
+  }
+
+  .action-btn:hover {
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--color-surface) 98%, transparent);
+  }
+  .action-btn:hover::before {
+    opacity: 0.75;
+  }
+  .action-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.12);
+  }
+  .action-btn:focus-visible {
+    outline: 2px solid var(--accent-regular);
+    outline-offset: 3px;
+  }
+  .action-label {
+    grid-area: title;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .action-mode {
+    grid-area: state;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  .icon {
+    grid-area: icon;
+    inline-size: 36px;
+    block-size: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    position: relative;
+    background: color-mix(in srgb, var(--color-border) 24%, transparent);
+
+    transform: scale(0.85) rotate(-8deg);
+    transition:
+      opacity 0.22s ease,
+      transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+      filter 0.22s ease;
+  }
+  .icon svg {
+    pointer-events: none;
+  }
+</style>

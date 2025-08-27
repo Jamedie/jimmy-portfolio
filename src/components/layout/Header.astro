@@ -55,12 +55,9 @@ const { i18n, lang } = Astro.props;
     const drawer = document.getElementById("mobile-drawer");
     const backdrop = document.querySelector(".backdrop");
 
-    console.log("Menu elements:", { btn, drawer, backdrop });
-
     function toggle(open) {
       const isOpen =
         open ?? !document.documentElement.classList.contains("menu-open");
-      console.log("Toggle called, isOpen:", isOpen);
       document.documentElement.classList.toggle("menu-open", isOpen);
       btn?.setAttribute("aria-expanded", String(isOpen));
       if (backdrop) backdrop.hidden = !isOpen;
@@ -68,7 +65,6 @@ const { i18n, lang } = Astro.props;
     }
 
     btn?.addEventListener("click", () => {
-      console.log("Button clicked");
       toggle();
     });
     drawer

@@ -1,8 +1,8 @@
 ---
-import LanguageSwitcher from "../common/LanguageSwitcher.astro";
 import QuickAccessTips from "../common/QuickAccessTips.astro";
-import ThemeToggle from "../common/ThemeToggle.astro";
 import CloseButton from "../common/CloseButton.astro";
+import QuickAccessActions from "../common/QuickAccessActions.astro";
+import QuickAccessActivity from "../common/QuickAccessActivity.astro";
 
 interface Props {
   githubUsername?: string;
@@ -109,15 +109,10 @@ const { i18n, keycapLabel } = Astro.props;
 
     <div class="right-layout">
       <!-- Actions -->
-      <div class="qa-actions-container">
-        <ThemeToggle />
-        <LanguageSwitcher languages={languages} currentLang={lang} />
-      </div>
+      <QuickAccessActions i18n={i18n} lang={lang} />
 
       <!-- Activités -->
-      <div class="qa-activities-container">
-        <h4 class="no-select">{i18n.quickAccess.activities}</h4>
-      </div>
+      <QuickAccessActivity i18n={i18n} lang={lang} />
     </div>
 
     <!-- Raccourcis clavier -->
@@ -148,6 +143,7 @@ const { i18n, keycapLabel } = Astro.props;
 
   #quick-access-menu[data-open="1"] {
     opacity: 1;
+    pointer-events: auto;
   }
 
   #quick-access-menu[data-open="0"] {
@@ -183,34 +179,15 @@ const { i18n, keycapLabel } = Astro.props;
     pointer-events: auto;
   }
 
-  .close-btn {
-    position: absolute;
-    top: var(--spacing-10);
-    right: var(--spacing-10);
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-2);
-
-    background-color: var(--color-surface);
-    border-radius: var(--border-radius);
-    color: var(--accent-regular);
-    transition: color 0.2s ease;
-  }
-
-  .close-btn:hover {
-  }
-
   .right-layout {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    height: 100%;
+    position: absolute;
+    top: 6rem;
+    right: var(--spacing-15);
+    bottom: var(--spacing-15);
+    width: min(400px, 100%);
+    overflow: auto;
+    gap: var(--spacing-5);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-10);
-    padding: var(--spacing-10);
   }
 </style>

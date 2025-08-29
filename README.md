@@ -5,7 +5,7 @@
 Ce dépôt contient le code source de mon portfolio personnel, développé avec le framework **Astro**.  
 Il met en avant mes compétences et mes projets en tant que développeur spécialisé en **développement mobile (Unity)**, **web** et **réalité augmentée**.
 
-➡️ **Site déployé** : [Lien vers le site à compléter]
+➡️ **Site déployé** : [https://jimmygaucher.com](https://jimmygaucher.com)
 
 ---
 

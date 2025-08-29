@@ -3,6 +3,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://votre-domaine.com",
+  site: "https://jimmygaucher.com",
   integrations: [sitemap()],
 });

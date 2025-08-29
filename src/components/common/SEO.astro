@@ -34,6 +34,37 @@ const locales = {
 const getLocalizedPath = (targetLang: "fr" | "en") => {
   return Astro.url.pathname.replace(/^\/[a-z]{2}/, `/${targetLang}`);
 };
+
+// JSON-LD structured data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jimmy Gaucher",
+  jobTitle:
+    lang === "fr" ? "Développeur Mobile & Web" : "Mobile & Web Developer",
+  description: description,
+  url: canonicalURL.href,
+  image: imageURL.href,
+  sameAs: [
+    "https://github.com/Jamedie",
+    "https://linkedin.com/in/jimmy-gaucher",
+  ],
+  knowsAbout: [
+    "Unity",
+    "C#",
+    "JavaScript",
+    "TypeScript",
+    "Astro",
+    "React",
+    "Mobile Development",
+    "Web Development",
+    "Augmented Reality",
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "Freelance",
+  },
+};
 ---
 
 <Fragment>
@@ -76,5 +107,10 @@ const getLocalizedPath = (targetLang: "fr" | "en") => {
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={imageURL.href} />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+  <!-- JSON-LD structured data -->
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(jsonLd)}
+  />
 </Fragment>

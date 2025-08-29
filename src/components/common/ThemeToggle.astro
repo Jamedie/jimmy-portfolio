@@ -29,7 +29,12 @@ import Icon from "./Icon.astro";
 </script>
 
 <div class="theme-toggle">
-  <button id="theme-toggle-btn">
+  <button
+    id="theme-toggle-btn"
+    type="button"
+    aria-label="Change theme"
+    aria-pressed="false"
+  >
     <span class="icon light"><Icon icon="sun" /></span>
     <span class="icon dark"><Icon icon="moon" /></span>
   </button>

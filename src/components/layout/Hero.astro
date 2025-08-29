@@ -11,13 +11,13 @@ const { i18n } = Astro.props;
 
 <section class="hero">
   <div class="container">
-    <h3 class="greeting no-select">{i18n.hero.greeting}</h3>
+    <p class="greeting no-select">{i18n.hero.greeting}</p>
     <h1 class="title">
       <span class="light">{"im" in i18n.hero ? i18n.hero.im : ""}</span>
       <span class="first-name">Jimmy</span>
       <span class="name">Gaucher</span>
     </h1>
-    <h4 class="subtitle">{i18n.hero.role_description}</h4>
+    <h2 class="subtitle">{i18n.hero.role_description}</h2>
 
     <a class="btn btn--primary" href="#contact">
       {i18n.hero.cta_contact}
@@ -58,7 +58,19 @@ const { i18n } = Astro.props;
   }
 
   .greeting {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: clamp(18px, 1.2vw + 14px, 24px);
     color: var(--color-text-secondary);
+  }
+
+  .hero .subtitle {
+    margin-top: 0.75rem;
+    margin-bottom: 1.25rem;
+    font-size: clamp(16px, 1.2vw + 12px, 22px);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    opacity: 0.9;
   }
 
   .first-name {

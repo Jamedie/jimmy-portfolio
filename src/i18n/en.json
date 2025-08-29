@@ -1,9 +1,9 @@
 {
   "common": {
     "site_name": "Jimmy Gaucher | Developer",
-    "site_description": "Passionate about technology, I am a mobile, web, and augmented reality developer. Specialized in mobile development with Unity, I also design web applications and augmented reality experiences.",
-    "quick_access": "Quick access",
-    "keycap_label": "Q",
+    "site_description": "Passionate about technology, I’m a mobile, web, and augmented reality developer. Specialized in mobile development with Unity, I also design web applications and augmented reality experiences.",
+    "quick_access": "Quick Access",
+    "keycap_label": "A",
     "languages": {
       "fr": "French",
       "en": "English"
@@ -11,44 +11,44 @@
   },
   "home": {
     "page_name": "Jimmy Gaucher | Developer",
-    "description": "Welcome to Jimmy Gaucher’s portfolio. Discover my projects in web, mobile, and augmented reality development.",
-    "title": "Welcome to my website!"
+    "description": "Welcome to Jimmy Gaucher’s portfolio. Explore my projects in web, mobile, and augmented reality development.",
+    "title": "Welcome to my site!"
   },
   "hero": {
     "greeting": "Hello!",
-    "im": "I am",
-    "role_description": "Mobile, web & AR developer,\ncreator of innovative digital experiences.",
+    "im": "I’m",
+    "role_description": "Mobile, web & augmented reality developer,\ncreator of innovative digital experiences.",
     "cta_contact": "Contact me",
     "cta_contact_href": "mailto:mail@jimmygaucher.com",
     "cta_resume": "View My Resume",
     "cta_resume_href": "/cv.pdf"
   },
   "about": {
-    "title": "About Me",
-    "description": "Passionate about technology,\nI am a mobile, web, and augmented reality developer.\nSpecialized in mobile development with Unity,\nI also design web applications and augmented reality experiences."
+    "title": "About me",
+    "description": "Passionate about interactive experiences,\nI design and develop mobile, web, and augmented reality applications.\n\nFocused on AR and real-time, I often use Unity with AR Foundation or WebXR to craft immersive, interactive experiences.\n\nI handle the full lifecycle: prototyping, UX, performance, CI/CD, and deployment.\nMy approach is pragmatic, iterative, and impact-driven."
   },
   "projects": {
-    "title": "My Projects",
-    "view_project": "View Project",
+    "title": "My projects",
+    "view_project": "View project",
     "projects": [
       {
         "title": "Project 1",
-        "description": "Description of project 1",
+        "description": "Project 1 description",
         "github": "https://github.com/Jamedie",
         "live": "https://google.com"
       }
     ]
   },
   "quickAccess": {
-    "actions": "Actions center",
-    "activities": "Recent activities",
+    "actions": "Action Center",
+    "activities": "Recent activity",
     "shortcuts": {
-      "header": "Tip: Keyboard shortcuts",
-      "description": "Navigate easily through the website using keyboard shortcuts.",
-      "open": "Open menu",
-      "close": "Close menu",
-      "changeLanguage": "Change language",
-      "changeTheme": "Change theme"
+      "header": "Tip: Shortcuts",
+      "description": "Navigate the site easily using keyboard shortcuts.",
+      "open": "Open the menu",
+      "close": "Close the menu",
+      "changeTheme": "Change theme",
+      "changeLanguage": "Change language"
     },
     "theme": {
       "label": "Current theme",
@@ -57,14 +57,14 @@
       "system": "System"
     },
     "language": {
-      "label": "language",
+      "label": "Language",
       "fr": "French",
       "en": "English"
     }
   },
   "contact": {
-    "title": "Contact Me",
-    "description": "You can contact me by email or via the social networks below."
+    "title": "Contact me",
+    "description": "You can contact me by email at the address below or via the social networks listed."
   },
   "footer": {
     "description": "Jimmy Gaucher | © 2025 - All rights reserved."

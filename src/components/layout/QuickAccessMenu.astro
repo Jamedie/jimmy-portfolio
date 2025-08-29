@@ -2,7 +2,6 @@
 import QuickAccessTips from "../common/QuickAccessTips.astro";
 import CloseButton from "../common/CloseButton.astro";
 import QuickAccessActions from "../common/QuickAccessActions.astro";
-import QuickAccessActivity from "../common/QuickAccessActivity.astro";
 
 interface Props {
   githubUsername?: string;
@@ -110,9 +109,6 @@ const { i18n, keycapLabel } = Astro.props;
     <div class="right-layout">
       <!-- Actions -->
       <QuickAccessActions i18n={i18n} lang={lang} />
-
-      <!-- Activités -->
-      <QuickAccessActivity i18n={i18n} lang={lang} />
     </div>
 
     <!-- Raccourcis clavier -->

@@ -9,7 +9,7 @@
       "fr": "Horoscopes quotidiens et décalés pour joueurs compétitifs\n(12 signes, ton fun, AR gaming vibes).",
       "en": "Daily, playful horoscopes for competitive gamers (12 signs, fun tone, gaming vibes)."
     },
-    "tech": ["Astro", "HTML", "CSS", "Netlify"],
+    "tech": ["Astro", "HTML", "CSS"],
     "links": {
       "demo": "https://astrogamers.netlify.app/",
       "github": "https://github.com/Jamedie/AstroGamer"

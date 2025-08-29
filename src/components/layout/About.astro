@@ -23,7 +23,7 @@ const title = i18n.about.title;
   </div>
   <div class="container">
     <div class="col left">
-      <p class="description no-select">{i18n.about.description}</p>
+      <h4 class="description no-select">{i18n.about.description}</h4>
       <ResumeButton label={i18n.hero.cta_resume} />
     </div>
     <div class="col right">
@@ -66,6 +66,16 @@ const title = i18n.about.title;
     flex-direction: column;
     gap: var(--spacing-4);
     align-items: flex-start;
+  }
+
+  .left {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
   }
 
   .description {

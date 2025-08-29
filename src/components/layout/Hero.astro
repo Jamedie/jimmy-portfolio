@@ -13,13 +13,11 @@ const { i18n } = Astro.props;
   <div class="container">
     <h3 class="greeting no-select">{i18n.hero.greeting}</h3>
     <h1 class="title">
-      <span class="light no-select"
-        >{"im" in i18n.hero ? i18n.hero.im : ""}</span
-      >
-      <span class="first-name no-select">Jimmy</span>
-      <span class="name no-select">Gaucher</span>
+      <span class="light">{"im" in i18n.hero ? i18n.hero.im : ""}</span>
+      <span class="first-name">Jimmy</span>
+      <span class="name">Gaucher</span>
     </h1>
-    <h4 class="subtitle no-select">{i18n.hero.role_description}</h4>
+    <h4 class="subtitle">{i18n.hero.role_description}</h4>
 
     <a
       class="btn btn--primary"

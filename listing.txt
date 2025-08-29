@@ -12,6 +12,7 @@ tsconfig.json
 public\images
 public\favicon.ico
 public\robots.txt
+public\social-default.jpg
 public\_redirects
 public\images\projects
 public\images\logo-jimmy.svg
@@ -35,6 +36,7 @@ src\components\common
 src\components\icons
 src\components\intro
 src\components\layout
+src\components\common\CloseButton.astro
 src\components\common\ConnectWithMe.astro
 src\components\common\Drawer.astro
 src\components\common\Icon.astro
@@ -44,9 +46,12 @@ src\components\common\ProjectButton.astro
 src\components\common\ProjectCard.astro
 src\components\common\ProjectsGrid.astro
 src\components\common\QuickAccess.astro
+src\components\common\QuickAccessActions.astro
+src\components\common\QuickAccessTips.astro
 src\components\common\ResumeButton.astro
 src\components\common\ScrollToTop.astro
 src\components\common\SEO.astro
+src\components\common\ThemeModeCycle.astro
 src\components\common\ThemeToggle.astro
 src\components\icons\IconPaths.ts
 src\components\intro\IntroScreen.astro
@@ -56,6 +61,7 @@ src\components\layout\Footer.astro
 src\components\layout\Header.astro
 src\components\layout\Hero.astro
 src\components\layout\Projects.astro
+src\components\layout\QuickAccessMenu.astro
 src\data\projects.json
 src\data\types.ts
 src\i18n\en.json

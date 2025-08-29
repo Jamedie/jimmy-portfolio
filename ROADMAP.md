@@ -6,33 +6,28 @@ Ce document liste les étapes de développement passées, en cours et futures po
 
 ## ✅ Déjà réalisé
 
-- [x] Mise en place du projet avec **Astro**
-- [x] Configuration TypeScript & ESLint
-- [x] Système de **design global** (variables CSS, thèmes clair/sombre)
-- [x] Création des sections principales : Hero, About, Projects, Contact
-- [x] Composants réutilisables : Header, Footer, Drawer, QuickAccess, ThemeToggle
-- [x] Gestion du multilingue (**fr/en**) via JSON i18n
-- [x] Données dynamiques pour les projets (`src/data/projects.json`)
-- [x] Optimisation des images (WebP, SVG)
-- [x] Ajout du SEO (`SEO.astro`) + `robots.txt`
-- [x] Déploiement automatisé sur **Netlify**
+- [x] Migration vers Astro
+- [x] Mise en place de la structure du projet (components, layouts, i18n)
+- [x] Ajout du contenu multilingue (fr / en)
+- [x] Création des pages principales : Hero, About, Projects, Contact
+- [x] Intégration des projets avec `src/data/projects.json`
+- [x] Ajout du Quick Access Menu et composants UI
+- [x] Optimisation SEO (favicon, robots.txt, social preview)
+- [x] Déploiement sur Netlify avec configuration `netlify.toml`
+- [x] Ajout du domaine personnalisé
+- [x] Optimisation Lighthouse (SEO, accessibilité, performance)
 
 ---
 
 ## 🚧 En cours
 
-- [ ] Optimisation Lighthouse (SEO, accessibilité, performance)
-- [ ] Ajout de tests unitaires sur les composants clés
-
 ---
 
 ## 📌 À venir
 
-- [ ] Génération automatique du sitemap.xml
+- [ ] Version anglaise du CV en ligne
 - [ ] Intégration d’analytics (Plausible, Umami ou GA4)
-- [ ] Ajout d’un formulaire de contact avec envoi via service externe (Formspree, Netlify Forms, etc.)
 - [ ] Expérimentations en **WebXR / AR** directement sur le portfolio
-- [ ] Refonte graphique V2 (nouvelles maquettes Figma, refonte UI/UX)
 
 ---
 

@@ -20,12 +20,13 @@ Il met en avant mes compétences et mes projets en tant que développeur spécia
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Stack technique
 
-- **Framework** : [Astro](https://astro.build/)
-- **Langages** : HTML, CSS, TypeScript
-- **Gestion multilingue** : JSON i18n (`src/i18n/fr.json`, `src/i18n/en.json`)
-- **Déploiement** : Netlify (`netlify.toml`)
+- [Astro](https://astro.build/) - Framework principal
+- [TypeScript](https://www.typescriptlang.org/)
+- [CSS Modules & Global Styles](src/styles)
+- Internationalisation : fichiers JSON (`src/i18n/fr.json`, `src/i18n/en.json`)
+- Déploiement : [Netlify](https://www.netlify.com/)
 
 ---
 

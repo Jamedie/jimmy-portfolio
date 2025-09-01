@@ -66,7 +66,7 @@ const title = i18n.contact.title;
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-4);
+    gap: var(--spacing-2);
     height: 3rem;
     border-radius: var(--border-radius);
     background: var(--accent-regular);
@@ -74,6 +74,8 @@ const title = i18n.contact.title;
     text-decoration: none;
     font-weight: 600;
     transition: transform 0.2s ease;
+    min-width: 130px;
+    justify-content: center;
   }
   @media (max-width: 1024px) {
     .container {

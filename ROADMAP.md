@@ -16,6 +16,7 @@ Ce document liste les étapes de développement passées, en cours et futures po
 - [x] Déploiement sur Netlify avec configuration `netlify.toml`
 - [x] Ajout du domaine personnalisé
 - [x] Optimisation Lighthouse (SEO, accessibilité, performance)
+- [x] Intégration d’analytics (Plausible, Umami ou GA4)
 
 ---
 
@@ -26,7 +27,6 @@ Ce document liste les étapes de développement passées, en cours et futures po
 ## 📌 À venir
 
 - [ ] Version anglaise du CV en ligne
-- [ ] Intégration d’analytics (Plausible, Umami ou GA4)
 - [ ] Expérimentations en **WebXR / AR** directement sur le portfolio
 
 ---

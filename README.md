@@ -2,6 +2,8 @@
 
 ![jimmy-portfolio](https://count.getloli.com/@jimmy-portfolio?name=jimmy-portfolio&theme=miku&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=0)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a20c1287-5e44-4157-81a7-01ee1de13336/deploy-status)](https://app.netlify.com/projects/jimmy-website/deploys)
+
 Ce dépôt contient le code source de mon portfolio personnel, développé avec le framework **Astro**.  
 Il met en avant mes compétences et mes projets en tant que développeur spécialisé en **développement mobile (Unity)**, **web** et **réalité augmentée**.
 

@@ -1,4 +1,4 @@
-# Portfolio de Jimmy Gaucher 👋
+# Portfolio de Jimmy Gaucher
 
 ![jimmy-portfolio](https://count.getloli.com/@jimmy-portfolio?name=jimmy-portfolio&theme=miku&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=0)
 
@@ -11,7 +11,7 @@ Il met en avant mes compétences et mes projets en tant que développeur spécia
 
 ---
 
-## ✨ Caractéristiques
+## Caractéristiques
 
 - **Performances optimisées** : site statique ultra-rapide grâce à Astro.
 - **Design system modulable** : variables CSS, thèmes clair/sombre, composants réutilisables.
@@ -22,7 +22,7 @@ Il met en avant mes compétences et mes projets en tant que développeur spécia
 
 ---
 
-## 🚀 Stack technique
+## Stack technique
 
 - [Astro](https://astro.build/) - Framework principal
 - [TypeScript](https://www.typescriptlang.org/)
@@ -32,7 +32,7 @@ Il met en avant mes compétences et mes projets en tant que développeur spécia
 
 ---
 
-## 📂 Structure du projet
+## Structure du projet
 
 ```
 /
@@ -59,7 +59,7 @@ Il met en avant mes compétences et mes projets en tant que développeur spécia
 
 ---
 
-## 🚀 Démarrage rapide
+## Démarrage rapide
 
 ### 1. Cloner le dépôt
 
@@ -84,7 +84,7 @@ Votre site est accessible sur : [http://localhost:4321](http://localhost:4321) �
 
 ---
 
-## ⚙️ Scripts disponibles
+## Scripts disponibles
 
 - `npm run dev` → Lance le serveur de développement avec HMR
 - `npm run build` → Compile et optimise le site pour la production (`/dist`)
@@ -92,6 +92,6 @@ Votre site est accessible sur : [http://localhost:4321](http://localhost:4321) �
 
 ---
 
-## 📄 Licence
+## Licence
 
 Ce projet est sous licence **MIT**.

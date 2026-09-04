@@ -1,7 +1,7 @@
 // astro.config.mjs
-import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import sentry from "@sentry/astro";
+import { defineConfig } from "astro/config";
 import { loadEnv } from "vite";
 
 const { SENTRY_AUTH_TOKEN } = loadEnv(

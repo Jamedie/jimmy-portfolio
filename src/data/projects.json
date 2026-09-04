@@ -1,76 +1,70 @@
 [
-  {
-    "slug": "astro-gamer",
-    "year": 2025,
-    "icon": "/images/projects/astrogamers-icon.webp",
-    "featured": true,
-    "title": { "fr": "Astrog@mers", "en": "Astrogamers" },
-    "description": {
-      "fr": "Horoscopes quotidiens et décalés pour joueurs compétitifs\n(12 signes, ton fun, AR gaming vibes).",
-      "en": "Daily, playful horoscopes for competitive gamers (12 signs, fun tone, gaming vibes)."
-    },
-    "tech": ["Astro", "HTML", "CSS"],
-    "links": {
-      "demo": "https://astrogamers.netlify.app/",
-      "github": "https://github.com/Jamedie/AstroGamer"
-    },
-    "cover": "/images/projects/astrogamers-cover.webp"
-  },
-  {
-    "slug": "innovaition-outdoor",
-    "year": 2025,
-    "icon": "/images/projects/innovaition-outdoor-icon.webp",
-    "featured": false,
-    "title": { "fr": "InnovAItion Outdoor", "en": "InnovAItion Outdoor" },
-    "description": {
-      "fr": "Site explorant des idées outdoor innovantes avec un design moderne et une expérience immersive.",
-      "en": "Website exploring innovative outdoor ideas, with a modern design and immersive experience."
-    },
-    "tech": ["Svelte", "JavaScript", "CSS"],
-    "links": {
-      "demo": "https://innovaition-outdoor.web.app/",
-      "github": "https://github.com/Jamedie/ecormerce-packshot-interaction"
-    },
-    "cover": "/images/projects/innovaition-outdoor-cover.webp"
-  },
-  {
-    "slug": "portfolio-astro",
-    "year": 2025,
-    "icon": "/images/projects/logo-jimmy.svg",
-    "featured": false,
-    "title": { "fr": "Portfolio Astro", "en": "Astro Portfolio" },
-    "description": {
-      "fr": "Site statique ultra-rapide, i18n et design system.",
-      "en": "Blazing fast static site with i18n and design system."
-    },
-    "tech": ["Astro", "TypeScript", "CSS"],
-    "links": {
-      "demo": "/",
-      "github": "https://github.com/Jamedie/portfolio"
-    },
-    "cover": "/images/projects/portfolio-cover.webp"
-  },
-  {
-    "slug": "miniurl",
-    "year": 2025,
-    "icon": "/images/projects/miniurl-icon.webp",
-    "featured": false,
-    "title": { "fr": "MiniURL", "en": "MiniURL" },
-    "description": {
-      "fr": "Service de raccourcissement d'URL avec un design minimaliste, redirections ultra-rapides, TTL, alias custom, rate-limit et analytics Umami.",
-      "en": "URL shortener with a minimalist design, ultra-fast redirects, TTL, custom aliases, rate limiting and Umami analytics."
-    },
-    "tech": [
-      "Cloudflare Workers",
-      "TypeScript",
-      "Cloudflare KV",
-      "CSS",
-      "Umami"
-    ],
-    "links": {
-      "demo": "https://wonder.muniurl.workers.dev/",
-      "github": "https://github.com/Jamedie/miniurl"
-    },
-    "cover": "/images/projects/miniurl-cover.webp"
-  }
+	{
+		"slug": "astro-gamer",
+		"year": 2025,
+		"icon": "/images/projects/astrogamers-icon.webp",
+		"featured": true,
+		"title": { "fr": "Astrog@mers", "en": "Astrogamers" },
+		"description": {
+			"fr": "Horoscopes quotidiens et décalés pour joueurs compétitifs\n(12 signes, ton fun, AR gaming vibes).",
+			"en": "Daily, playful horoscopes for competitive gamers (12 signs, fun tone, gaming vibes)."
+		},
+		"tech": ["Astro", "HTML", "CSS"],
+		"links": {
+			"demo": "https://astrogamers.netlify.app/",
+			"github": "https://github.com/Jamedie/AstroGamer"
+		},
+		"cover": "/images/projects/astrogamers-cover.webp"
+	},
+	{
+		"slug": "innovaition-outdoor",
+		"year": 2025,
+		"icon": "/images/projects/innovaition-outdoor-icon.webp",
+		"featured": false,
+		"title": { "fr": "InnovAItion Outdoor", "en": "InnovAItion Outdoor" },
+		"description": {
+			"fr": "Site explorant des idées outdoor innovantes avec un design moderne et une expérience immersive.",
+			"en": "Website exploring innovative outdoor ideas, with a modern design and immersive experience."
+		},
+		"tech": ["Svelte", "JavaScript", "CSS"],
+		"links": {
+			"demo": "https://innovaition-outdoor.web.app/",
+			"github": "https://github.com/Jamedie/ecormerce-packshot-interaction"
+		},
+		"cover": "/images/projects/innovaition-outdoor-cover.webp"
+	},
+	{
+		"slug": "portfolio-astro",
+		"year": 2025,
+		"icon": "/images/projects/logo-jimmy.svg",
+		"featured": false,
+		"title": { "fr": "Portfolio Astro", "en": "Astro Portfolio" },
+		"description": {
+			"fr": "Site statique ultra-rapide, i18n et design system.",
+			"en": "Blazing fast static site with i18n and design system."
+		},
+		"tech": ["Astro", "TypeScript", "CSS"],
+		"links": {
+			"demo": "/",
+			"github": "https://github.com/Jamedie/portfolio"
+		},
+		"cover": "/images/projects/portfolio-cover.webp"
+	},
+	{
+		"slug": "miniurl",
+		"year": 2025,
+		"icon": "/images/projects/miniurl-icon.webp",
+		"featured": false,
+		"title": { "fr": "MiniURL", "en": "MiniURL" },
+		"description": {
+			"fr": "Service de raccourcissement d'URL avec un design minimaliste, redirections ultra-rapides, TTL, alias custom, rate-limit et analytics Umami.",
+			"en": "URL shortener with a minimalist design, ultra-fast redirects, TTL, custom aliases, rate limiting and Umami analytics."
+		},
+		"tech": ["Cloudflare Workers", "TypeScript", "Cloudflare KV", "CSS", "Umami"],
+		"links": {
+			"demo": "https://wonder.muniurl.workers.dev/",
+			"github": "https://github.com/Jamedie/miniurl"
+		},
+		"cover": "/images/projects/miniurl-cover.webp"
+	}
 ]

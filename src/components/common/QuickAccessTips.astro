@@ -1,8 +1,9 @@
 ---
+import type { I18n } from "@/data/types";
 import Icon from "../common/Icon.astro";
 
 interface Props {
-  i18n: any;
+  i18n: I18n;
   keycapLabel?: string;
   position?: "bl" | "br" | "tl" | "tr";
   offset?: string;

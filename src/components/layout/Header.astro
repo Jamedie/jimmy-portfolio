@@ -1,216 +1,210 @@
 ---
-import QuickAccess from "../common/QuickAccess.astro";
+import type { I18n } from "@/data/types";
 import Drawer from "../common/Drawer.astro";
+import QuickAccess from "../common/QuickAccess.astro";
 
 export interface Props {
-  i18n: any;
-  lang: "fr" | "en";
+	i18n: I18n;
+	lang: "fr" | "en";
 }
-const { i18n, lang } = Astro.props;
+const { i18n } = Astro.props;
 ---
 
 <header class="sb-comp">
-  <div class="navBar glass-panel">
-    <div class="left-actions">
-      <img
-        class="logo"
-        src="/images/logo-jimmy.svg"
-        alt="Logo de Jimmy Gaucher"
-      />
+	<div class="navBar glass-panel">
+		<div class="left-actions">
+			<img class="logo" src="/images/logo-jimmy.svg" alt="Logo de Jimmy Gaucher">
 
-      <!-- NAV (visible desktop) -->
-      <nav class="actions" aria-label="Main">
-        <a href="#about">{i18n.about.title}</a>
-        <a href="#projects">{i18n.projects.title}</a>
-        <a href="#contact">{i18n.hero.cta_contact}</a>
-      </nav>
-    </div>
+			<!-- NAV (visible desktop) -->
+			<nav class="actions" aria-label="Main">
+				<a href="#about">{i18n.about.title}</a>
+				<a href="#projects">{i18n.projects.title}</a>
+				<a href="#contact">{i18n.hero.cta_contact}</a>
+			</nav>
+		</div>
 
-    <!-- droite: QuickAccess + Burger -->
-    <div class="right-actions">
-      <QuickAccess
-        label={i18n.common.quick_access}
-        keycapLabel={i18n.common.keycap_label}
-      />
-      <button
-        id="menu-toggle"
-        class="menu-toggle"
-        aria-label="Ouvrir le menu"
-        aria-controls="mobile-drawer"
-        aria-expanded="false"
-      >
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-    </div>
-  </div>
+		<!-- droite: QuickAccess + Burger -->
+		<div class="right-actions">
+			<QuickAccess label={i18n.common.quick_access} keycapLabel={i18n.common.keycap_label} />
+			<button
+				type="button"
+				id="menu-toggle"
+				class="menu-toggle"
+				aria-label="Ouvrir le menu"
+				aria-controls="mobile-drawer"
+				aria-expanded="false"
+			>
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</button>
+		</div>
+	</div>
 
-  <Drawer i18n={i18n} />
+	<Drawer i18n={i18n} />
 </header>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("menu-toggle");
-    const drawer = document.getElementById("mobile-drawer");
-    const backdrop = document.querySelector(".backdrop");
+document.addEventListener("DOMContentLoaded", () => {
+	const btn = document.getElementById("menu-toggle");
+	const drawer = document.getElementById("mobile-drawer");
+	const backdrop = document.querySelector(".backdrop");
 
-    function toggle(open) {
-      const isOpen =
-        open ?? !document.documentElement.classList.contains("menu-open");
-      document.documentElement.classList.toggle("menu-open", isOpen);
-      btn?.setAttribute("aria-expanded", String(isOpen));
-      if (backdrop) backdrop.hidden = !isOpen;
-      document.body.style.overflow = isOpen ? "hidden" : "";
-    }
+	function toggle(open) {
+		const isOpen = open ?? !document.documentElement.classList.contains("menu-open");
+		document.documentElement.classList.toggle("menu-open", isOpen);
+		btn?.setAttribute("aria-expanded", String(isOpen));
+		if (backdrop) backdrop.hidden = !isOpen;
+		document.body.style.overflow = isOpen ? "hidden" : "";
+	}
 
-    btn?.addEventListener("click", () => {
-      toggle();
-    });
-    drawer
-      ?.querySelectorAll("[data-close]")
-      .forEach((a) => a.addEventListener("click", () => toggle(false)));
-    backdrop?.addEventListener("click", () => toggle(false));
+	btn?.addEventListener("click", () => {
+		toggle();
+	});
+	drawer?.querySelectorAll("[data-close]").forEach((a) => {
+		a.addEventListener("click", () => toggle(false));
+	});
+	backdrop?.addEventListener("click", () => toggle(false));
 
-    // ESC pour fermer
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") toggle(false);
-    });
-  });
+	// ESC pour fermer
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") toggle(false);
+	});
+});
 </script>
 
 <style>
-  :root {
-    --header-height: 80px;
-    --glass-radius: 16px;
-    --glass-blur: 16px;
-    --glass-saturate: 160%;
-  }
+:root {
+	--header-height: 80px;
+	--glass-radius: 16px;
+	--glass-blur: 16px;
+	--glass-saturate: 160%;
+}
 
-  header {
-    position: fixed;
-    top: 0;
-    z-index: 40;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-top: var(--spacing-5);
-    pointer-events: none;
-  }
+header {
+	position: fixed;
+	top: 0;
+	z-index: 40;
+	width: 100%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding-top: var(--spacing-5);
+	pointer-events: none;
+}
 
-  .navBar {
-    pointer-events: auto;
-    position: relative;
-    height: var(--header-height);
-    width: min(1100px, 90%);
-    padding: 0 var(--spacing-4);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: var(--glass-radius);
-    overflow: hidden;
-  }
+.navBar {
+	pointer-events: auto;
+	position: relative;
+	height: var(--header-height);
+	width: min(1100px, 90%);
+	padding: 0 var(--spacing-4);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: var(--glass-radius);
+	overflow: hidden;
+}
 
-  .left-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-4);
-  }
-  .actions {
-    display: flex;
-    gap: var(--spacing-4);
-  }
-  .actions a {
-    text-decoration: none;
-    font-weight: 600;
-  }
+.left-actions {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-4);
+}
+.actions {
+	display: flex;
+	gap: var(--spacing-4);
+}
+.actions a {
+	text-decoration: none;
+	font-weight: 600;
+}
 
-  .right-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-3);
-  }
+.right-actions {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-3);
+}
 
-  .logo {
-    width: 40px;
-    height: 40px;
-  }
+.logo {
+	width: 40px;
+	height: 40px;
+}
 
-  /* Burger (caché desktop) */
-  .menu-toggle {
-    display: none;
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    border-radius: 10px;
-    background: transparent;
-    cursor: pointer;
-  }
+/* Burger (caché desktop) */
+.menu-toggle {
+	display: none;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	border-radius: 10px;
+	background: transparent;
+	cursor: pointer;
+}
 
-  .menu-toggle .bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    color: var(--accent-regular);
-    margin: 5px auto;
-    background: currentColor;
-    transition:
-      transform 0.2s ease,
-      opacity 0.2s ease;
-  }
+.menu-toggle .bar {
+	display: block;
+	width: 22px;
+	height: 2px;
+	color: var(--accent-regular);
+	margin: 5px auto;
+	background: currentColor;
+	transition:
+		transform 0.2s ease,
+		opacity 0.2s ease;
+}
 
-  .theme-toggle-container {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-4);
-    justify-content: center;
-    padding: 0.9rem 1rem;
-  }
+.theme-toggle-container {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-4);
+	justify-content: center;
+	padding: 0.9rem 1rem;
+}
 
-  /* Ouvert */
+/* Ouvert */
 
-  :global(.menu-open) .menu-toggle .bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-  :global(.menu-open) .menu-toggle .bar:nth-child(2) {
-    opacity: 0;
-  }
-  :global(.menu-open) .menu-toggle .bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
+:global(.menu-open) .menu-toggle .bar:nth-child(1) {
+	transform: translateY(7px) rotate(45deg);
+}
+:global(.menu-open) .menu-toggle .bar:nth-child(2) {
+	opacity: 0;
+}
+:global(.menu-open) .menu-toggle .bar:nth-child(3) {
+	transform: translateY(-7px) rotate(-45deg);
+}
 
-  /* RESPONSIVE */
-  @media (max-width: 720px) {
-    .actions {
-      display: none;
-    } /* on cache la nav inline */
-    .menu-toggle {
-      display: inline-block;
-    }
-    .navBar {
-      width: min(100%, 96%);
-    }
-  }
+/* RESPONSIVE */
+@media (max-width: 720px) {
+	.actions {
+		display: none;
+	} /* on cache la nav inline */
+	.menu-toggle {
+		display: inline-block;
+	}
+	.navBar {
+		width: min(100%, 96%);
+	}
+}
 
-  /* desktop */
-  @media (min-width: 721px) {
-    .navBar {
-      overflow: hidden;
-    }
-  }
-  /* mobile */
-  @media (max-width: 720px) {
-    .navBar {
-      overflow: visible;
-    }
-  }
+/* desktop */
+@media (min-width: 721px) {
+	.navBar {
+		overflow: hidden;
+	}
+}
+/* mobile */
+@media (max-width: 720px) {
+	.navBar {
+		overflow: visible;
+	}
+}
 
-  /* Accessibilité focus */
-  a:focus-visible,
-  .menu-toggle:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--accent-regular) 60%, white);
-    outline-offset: 2px;
-  }
+/* Accessibilité focus */
+a:focus-visible,
+.menu-toggle:focus-visible {
+	outline: 2px solid color-mix(in srgb, var(--accent-regular) 60%, white);
+	outline-offset: 2px;
+}
 </style>

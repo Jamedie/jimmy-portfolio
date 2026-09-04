@@ -1,22 +1,22 @@
 ---
-// src/layouts/Layout.astro
-import Header from "@/components/layout/Header.astro";
-import Footer from "@/components/layout/Footer.astro";
-import Hero from "@/components/layout/Hero.astro";
-import IntroScreen from "@/components/intro/IntroScreen.astro";
-import QuickAccessMenu from "@/components/layout/QuickAccessMenu.astro";
 import SEO from "@/components/common/SEO.astro";
+import IntroScreen from "@/components/intro/IntroScreen.astro";
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
+import Hero from "@/components/layout/Hero.astro";
+import QuickAccessMenu from "@/components/layout/QuickAccessMenu.astro";
+import type { I18n, PageKey } from "@/data/types";
 
 import "@/styles/global.css";
-import About from "@/components/layout/About.astro";
-import Projects from "@/components/layout/Projects.astro";
-import Contact from "@/components/layout/Contact.astro";
 import ScrollToTop from "@/components/common/ScrollToTop.astro";
+import About from "@/components/layout/About.astro";
+import Contact from "@/components/layout/Contact.astro";
+import Projects from "@/components/layout/Projects.astro";
 
 export interface Props {
-  i18n: any;
-  lang: "fr" | "en";
-  pageKey: string;
+	i18n: I18n;
+	lang: "fr" | "en";
+	pageKey: PageKey;
 }
 const { i18n, lang, pageKey } = Astro.props;
 const isHome = /^\/(fr|en)\/?$/.test(Astro.url.pathname);
@@ -27,54 +27,55 @@ const description = pageMeta?.description || i18n.common.site_description;
 ---
 
 <script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
+const theme = (() => {
+	if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+		return localStorage.getItem("theme");
+	}
+	if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+		return "dark";
+	}
+	return "light";
+})();
 
-  if (theme === "light") {
-    document.documentElement.classList.remove("theme-dark");
-  } else {
-    document.documentElement.classList.add("theme-dark");
-  }
+if (theme === "light") {
+	document.documentElement.classList.remove("theme-dark");
+} else {
+	document.documentElement.classList.add("theme-dark");
+}
 </script>
 
 <html lang={lang}>
-  <head>
-    <SEO title={title} description={description} lang={lang} />
-    <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="68527999-2175-4d2d-bc87-99088565e31e"></script>
-  </head>
+	<head>
+		<SEO title={title} description={description} lang={lang} />
+		<script
+			defer
+			src="https://cloud.umami.is/script.js"
+			data-website-id="68527999-2175-4d2d-bc87-99088565e31e"
+		></script>
+	</head>
 
-  <body>
-    {isHome && <IntroScreen />}
+	<body>
+		{isHome && <IntroScreen />}
 
-    <Header i18n={i18n} lang={lang} />
+		<Header i18n={i18n} lang={lang} />
 
-    <main>
-      <slot>
-        <Hero i18n={i18n} lang={lang} />
-        <About i18n={i18n} lang={lang} />
-        <Projects i18n={i18n} lang={lang} />
-        <Contact i18n={i18n} lang={lang} />
-        <ScrollToTop />
-        <QuickAccessMenu
-          githubUsername="Jamedie"
-          i18n={i18n}
-          lang={lang}
-          initialOpen={false}
-          keycapLabel={i18n.common.keycap_label}
-        />
-      </slot>
-    </main>
+		<main>
+			<slot>
+				<Hero i18n={i18n} lang={lang} />
+				<About i18n={i18n} lang={lang} />
+				<Projects i18n={i18n} lang={lang} />
+				<Contact i18n={i18n} lang={lang} />
+				<ScrollToTop />
+				<QuickAccessMenu
+					githubUsername="Jamedie"
+					i18n={i18n}
+					lang={lang}
+					initialOpen={false}
+					keycapLabel={i18n.common.keycap_label}
+				/>
+			</slot>
+		</main>
 
-    <Footer i18n={i18n} lang={lang} />
-  </body>
+		<Footer i18n={i18n} lang={lang} />
+	</body>
 </html>

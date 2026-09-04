@@ -1,11 +1,12 @@
 ---
+import type { I18n } from "@/data/types";
 import QuickAccessTips from "../common/QuickAccessTips.astro";
 import CloseButton from "../common/CloseButton.astro";
 import QuickAccessActions from "../common/QuickAccessActions.astro";
 
 interface Props {
   githubUsername?: string;
-  i18n: any;
+  i18n: I18n;
   lang: "fr" | "en";
   initialOpen?: boolean;
   keycapLabel: string;

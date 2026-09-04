@@ -1,9 +1,10 @@
 ---
+import type { I18n } from "@/data/types";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import ThemeModeCycle from "./ThemeModeCycle.astro";
 
 export interface Props {
-  i18n: any;
+  i18n: I18n;
   lang: "fr" | "en";
 }
 

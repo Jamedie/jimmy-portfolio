@@ -1,16 +1,19 @@
 {
-  "cSpell.words": [
-    "avec",
-    "filtre",
-    "ghibli",
-    "keycap",
-    "l'éditeur",
-    "pokedex",
-    "Pokédex",
-    "rapide",
-    "réalisée",
-    "rouroux",
-    "statique",
-    "webp"
-  ]
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.biome": "explicit"
+	},
+	"cSpell.words": [
+		"avec",
+		"filtre",
+		"ghibli",
+		"keycap",
+		"l'éditeur",
+		"pokedex",
+		"Pokédex",
+		"rapide",
+		"réalisée",
+		"rouroux",
+		"statique",
+		"webp"
+	]
 }

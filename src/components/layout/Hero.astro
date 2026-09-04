@@ -1,144 +1,139 @@
 ---
 import { Image } from "astro:assets";
+import type { I18n } from "@/data/types";
 import avatar from "../../assets/images/hero-image.webp";
-import Icon from "../common/Icon.astro";
+
 export interface Props {
-  i18n: any;
-  lang: "fr" | "en";
+	i18n: I18n;
+	lang: "fr" | "en";
 }
 const { i18n } = Astro.props;
 ---
 
 <section class="hero">
-  <div class="container">
-    <p class="greeting no-select">{i18n.hero.greeting}</p>
-    <h1 class="title">
-      <span class="light">{"im" in i18n.hero ? i18n.hero.im : ""}</span>
-      <span class="first-name">Jimmy</span>
-      <span class="name">Gaucher</span>
-    </h1>
-    <h2 class="subtitle">{i18n.hero.role_description}</h2>
+	<div class="container">
+		<p class="greeting no-select">{i18n.hero.greeting}</p>
+		<h1 class="title">
+			<span class="light">{"im" in i18n.hero ? i18n.hero.im : ""}</span>
+			<span class="first-name">Jimmy</span>
+			<span class="name">Gaucher</span>
+		</h1>
+		<h2 class="subtitle">{i18n.hero.role_description}</h2>
 
-    <a class="btn btn--primary" href="#contact">
-      {i18n.hero.cta_contact}
-    </a>
-    <div class="hero-avatar">
-      <div class="gradient-bg"></div>
-      <Image
-        src={avatar}
-        alt="Portrait de Jimmy Gaucher"
-        widths={[240, 320, 400]}
-        sizes="(max-width: 900px) 70vw, 380px"
-        loading="eager"
-        decoding="async"
-      />
-    </div>
-  </div>
+		<a class="btn btn--primary" href="#contact">
+			{i18n.hero.cta_contact}
+		</a>
+		<div class="hero-avatar">
+			<div class="gradient-bg"></div>
+			<Image
+				src={avatar}
+				alt="Portrait de Jimmy Gaucher"
+				widths={[240, 320, 400]}
+				sizes="(max-width: 900px) 70vw, 380px"
+				loading="eager"
+				decoding="async"
+			/>
+		</div>
+	</div>
 </section>
 
 <style>
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: clamp(3rem, 6vw, 6rem) var(--spacing-4);
-    background: var(--color-background);
-    text-align: left;
-  }
+.hero {
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	padding: clamp(3rem, 6vw, 6rem) var(--spacing-4);
+	background: var(--color-background);
+	text-align: left;
+}
 
-  .container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: var(--container-max-width, 1100px);
-    padding: 0 var(--spacing-4);
-    position: relative;
-    z-index: 2;
-  }
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	max-width: var(--container-max-width, 1100px);
+	padding: 0 var(--spacing-4);
+	position: relative;
+	z-index: 2;
+}
 
-  .greeting {
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    font-size: clamp(18px, 1.2vw + 14px, 24px);
-    color: var(--color-text-secondary);
-  }
+.greeting {
+	margin-bottom: 0.5rem;
+	font-weight: 700;
+	font-size: clamp(18px, 1.2vw + 14px, 24px);
+	color: var(--color-text-secondary);
+}
 
-  .hero .subtitle {
-    margin-top: 0.75rem;
-    margin-bottom: 1.25rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    opacity: 0.9;
-  }
+.hero .subtitle {
+	font-size: 1.5rem;
+	font-weight: 600;
+	opacity: 0.9;
+	margin: 0 0 1.25rem;
+	color: var(--color-text-secondary);
+	white-space: pre-line;
+}
 
-  .first-name {
-    color: var(--accent-regular);
-  }
+.first-name {
+	color: var(--accent-regular);
+}
 
-  .subtitle {
-    margin: 0 0 1.25rem;
-    color: var(--color-text-secondary);
-    white-space: pre-line;
-  }
-  .hero-avatar {
-    position: absolute;
-    right: 10%;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    width: 420px;
-    aspect-ratio: 3 / 4;
-    border-radius: 9999px;
-    overflow: hidden;
-    z-index: 1;
-  }
+.hero-avatar {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	width: 420px;
+	aspect-ratio: 3 / 4;
+	border-radius: 9999px;
+	overflow: hidden;
+	z-index: 1;
+}
 
-  .hero-avatar .gradient-bg {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      to top,
-      color-mix(in srgb, var(--accent-regular) 50%, transparent) 0%,
-      transparent 100%
-    );
-  }
+.hero-avatar .gradient-bg {
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: linear-gradient(
+		to top,
+		color-mix(in srgb, var(--accent-regular) 50%, transparent) 0%,
+		transparent 100%
+	);
+}
 
-  :global(.theme-dark) .hero-avatar .gradient-bg {
-    background: linear-gradient(
-      to top,
-      color-mix(in srgb, var(--accent-regular) 40%, transparent) 0%,
-      transparent 100%
-    );
-  }
+:global(.theme-dark) .hero-avatar .gradient-bg {
+	background: linear-gradient(
+		to top,
+		color-mix(in srgb, var(--accent-regular) 40%, transparent) 0%,
+		transparent 100%
+	);
+}
 
-  .hero-avatar img {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-  }
+.hero-avatar img {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	object-fit: scale-down;
+}
 
-  @media (max-width: 1024px) {
-    .hero {
-      flex-direction: column;
-      justify-content: center;
-    }
+@media (max-width: 1024px) {
+	.hero {
+		flex-direction: column;
+		justify-content: center;
+	}
 
-    .hero-avatar {
-      display: none;
-    }
+	.hero-avatar {
+		display: none;
+	}
 
-    .container {
-      text-align: left;
-      z-index: 3;
-    }
+	.container {
+		text-align: left;
+		z-index: 3;
+	}
 
-    .actions {
-      justify-content: center;
-    }
-  }
+	.actions {
+		justify-content: center;
+	}
+}
 </style>

@@ -1,12 +1,12 @@
 ---
 import Image from "astro/components/Image.astro";
+import type { I18n } from "@/data/types";
 import rouroux from "../../assets/images/rouroux-ghibli.webp";
-import Icon from "../common/Icon.astro";
 import ResumeButton from "../common/ResumeButton.astro";
 
 export interface Props {
-  i18n: any;
-  lang: "fr" | "en";
+	i18n: I18n;
+	lang: "fr" | "en";
 }
 const { i18n } = Astro.props;
 const title = i18n.about.title;
@@ -15,100 +15,100 @@ const title = i18n.about.title;
 <script is:inline></script>
 
 <section id="about">
-  <div class="title-wrapper">
-    <div class="title-container">
-      <h2 class="title no-select">{title}</h2>
-      <div class="line no-select"></div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="col left">
-      <h4 class="description no-select">{i18n.about.description}</h4>
-      <ResumeButton label={i18n.hero.cta_resume} />
-    </div>
-    <div class="col right">
-      <div class="image-container">
-        <Image
-          class="about-image"
-          src={rouroux}
-          alt="Portrait de Rouroux"
-          widths={[240, 320, 400]}
-          sizes="(max-width: 900px) 70vw, 380px"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-    </div>
-  </div>
+	<div class="title-wrapper">
+		<div class="title-container">
+			<h2 class="title no-select">{title}</h2>
+			<div class="line no-select"></div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="col left">
+			<h4 class="description no-select">{i18n.about.description}</h4>
+			<ResumeButton label={i18n.hero.cta_resume} />
+		</div>
+		<div class="col right">
+			<div class="image-container">
+				<Image
+					class="about-image"
+					src={rouroux}
+					alt="Portrait de Rouroux"
+					widths={[240, 320, 400]}
+					sizes="(max-width: 900px) 70vw, 380px"
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
+		</div>
+	</div>
 </section>
 
 <style>
-  #about {
-    padding: var(--spacing-5) var(--spacing-4);
-    background: var(--color-background);
-    text-align: center;
-    max-width: var(--container-max-width, 1100px);
-    margin: 0 auto;
-  }
+#about {
+	padding: var(--spacing-5) var(--spacing-4);
+	background: var(--color-background);
+	text-align: center;
+	max-width: var(--container-max-width, 1100px);
+	margin: 0 auto;
+}
 
-  .container {
-    width: 100%;
-    padding: 0 var(--spacing-4, 1rem);
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    justify-content: space-between;
-    text-align: left;
-    gap: clamp(1.5rem, 4vw, 3rem);
-  }
+.container {
+	width: 100%;
+	padding: 0 var(--spacing-4, 1rem);
+	display: grid;
+	grid-template-columns: 1.1fr 0.9fr;
+	justify-content: space-between;
+	text-align: left;
+	gap: clamp(1.5rem, 4vw, 3rem);
+}
 
-  .col {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-4);
-    align-items: flex-start;
-  }
+.col {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-4);
+	align-items: flex-start;
+}
 
-  .left {
-    display: flex;
-    align-items: flex-start;
-  }
+.left {
+	display: flex;
+	align-items: flex-start;
+}
 
-  .right {
-    display: flex;
-    align-items: center;
-  }
+.right {
+	display: flex;
+	align-items: center;
+}
 
-  .description {
-    color: var(--color-text-secondary);
-    white-space: pre-line;
-  }
+.description {
+	color: var(--color-text-secondary);
+	white-space: pre-line;
+}
 
-  .image-container {
-    position: relative;
-    display: inline-block;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-  }
+.image-container {
+	position: relative;
+	display: inline-block;
+	border-radius: var(--border-radius);
+	overflow: hidden;
+}
 
-  /* l’image reste en dessous */
-  .image-container img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 300px;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    position: relative;
-    z-index: 0;
-  }
+/* l’image reste en dessous */
+.image-container img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-width: 300px;
+	aspect-ratio: 3 / 4;
+	object-fit: cover;
+	position: relative;
+	z-index: 0;
+}
 
-  @media (max-width: 1024px) {
-    .container {
-      grid-template-columns: 1fr;
-    }
+@media (max-width: 1024px) {
+	.container {
+		grid-template-columns: 1fr;
+	}
 
-    .image-container img {
-      display: none;
-    }
-  }
+	.image-container img {
+		display: none;
+	}
+}
 </style>

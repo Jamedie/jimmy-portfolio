@@ -1,8 +1,9 @@
 ---
+import type { I18n } from "@/data/types";
 import ThemeToggle from "./ThemeToggle.astro";
 
 export interface Props {
-  i18n: any;
+  i18n: I18n;
 }
 
 const { i18n } = Astro.props;

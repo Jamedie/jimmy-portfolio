@@ -1,9 +1,10 @@
 ---
 import { Image } from "astro:assets";
+import type { I18n } from "@/data/types";
 import ConnectWithMe from "../common/ConnectWithMe.astro";
 
 export interface Props {
-  i18n: any;
+  i18n: I18n;
   lang: "fr" | "en";
 }
 
